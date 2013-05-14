@@ -22,7 +22,7 @@ define([
                     size = "normal";
                 }
 
-                return (this.get('profile').avatar + "?type=" + size )
+                return (this.get('avatar') + "?type=" + size )
             },
 
 
@@ -38,7 +38,7 @@ define([
                     height = 100;
                 }
 
-                return (this.get('profile').avatar + "?width=" + width + "&height" + height)
+                return (this.get('avatar') + "?width=" + width + "&height" + height)
             },
         });
 });
