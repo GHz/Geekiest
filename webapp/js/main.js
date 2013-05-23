@@ -1,5 +1,5 @@
 require.config({
-    'baseUrl': 'http://localhost/Geekiest/webapp/js',
+    'baseUrl': '/Geekiest/webapp/js',
     //'baseUrl': 'http://localhost/Geekiest/webapp/js',
     'paths':
     {

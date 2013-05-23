@@ -23,7 +23,7 @@ function(Backbone,
 		{
 			Backbone.history.start({
 				//pushState: false, //HTML PushState
-				root: "http://localhost/Geekiest/webapp/"
+				root: "/Geekiest/webapp/"
 				//root: appOptions.appRootUrl
 			});
 
