@@ -1,0 +1,40 @@
+<header class="splashscreen">
+	<div class="title">
+		<h1>GEEKIEST</h1>
+		<h2>culture - friends - war</h2>
+	</div>
+	<img src="img/splashscreen_bg.png" class="bg" />
+</header>
+
+<div class="shift">
+	<a href="#" class="btn facebook">LOGIN WITH FACEBOOK</a>
+	<a href="#" class="btn howto">HOW DO I PLAY ?</a>
+</div>
+
+<div class="copyright">COPYRIGHT  ©2013 THS</div>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+    appId      : '340107129425326', // App ID
+    channelUrl : 'http://localhost/Geekiest/webapp/', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true,
+    oauth      : true  // parse XFBML
+  });
+
+  };
+
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/fr_FR/all.js";
+   ref.parentNode.insertBefore(js, ref);
+ }(document));
+
+
+
+
+</script>

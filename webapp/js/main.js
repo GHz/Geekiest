@@ -1,5 +1,6 @@
 require.config({
     'baseUrl': 'http://localhost/Geekiest/webapp/js',
+    //'baseUrl': 'http://localhost/Geekiest/webapp/js',
     'paths':
     {
         "underscore": "libs/vendor/underscore-min",
@@ -30,7 +31,11 @@ require.config({
 
         //jQuery Libs (js/libs/*)
         //-----------------------------------------
-
+        'libs/jquery.slider':
+        {
+            deps: ['jquery'],
+            'exports': '$.fn.slider'
+        },
 
         //jQueryUI Libs (js/libs/*)
         //-----------------------------------------

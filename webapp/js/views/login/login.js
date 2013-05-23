@@ -3,9 +3,10 @@ function(Backbone){
 	return  Backbone.View.extend({
 		el: 'body',
 
-        initialize: function()
+        initialize: function(opts)
         {
-        console.log("LoginView");
+        	this.router = opts.router;
+        	console.log("LoginView");
         }
 	});
 });

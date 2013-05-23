@@ -1,0 +1,56 @@
+#player-wrapper
+	height: $youtubeFrameHeight
+	position: relative
+	overflow: hidden
+
+	.overlay
+		position: absolute
+		width: 100%
+		height: 100%
+		background: red
+		opacity: 0
+		z-index: 300
+
+	#player
+		z-index: 299
+	
+	.playpausebtn
+		position: absolute
+		width: 40px
+		height: 40px
+		bottom: 10px
+		left: 10px
+		z-index: 301
+		background: #2c2c2c
+
+
+#videoPlayer
+	header
+		background: #2c2c2c
+		color: #d1d1d1
+		text-align: center
+		height: 33px
+		font-size: 16px
+		font-weight: bold
+		position: relative
+		padding: 0 $contentPadding
+
+		.title
+			position: relative
+			top: -7px
+			background: #2c2c2c
+			padding: 0 14px
+
+		.hor_lign
+			display: block
+			height: 1px
+			width: 100%
+			background-color: #b3b3b3
+			position: relative
+			top: 50%
+			left: 0px
+
+.videoPickerWrapper
+	background: #2c2c2c
+	height: 70px
+	padding: 10px $contentPadding

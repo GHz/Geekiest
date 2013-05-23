@@ -1,14 +1,19 @@
 define([
-		'backbone'],
+		'backbone',
+		'packages/CustomView'
+
+		],
 function(
-		Backbone
+		Backbone,
+		CustomView
 ){
-	return  Backbone.View.extend({
+	return  CustomView.extend({
 		el: 'body',
 
-        initialize: function()
+        initialize: function(opts)
         {
-        console.log("HomeView");
-        }
+        	this.constructor.__super__.initialize.apply(this, opts);
+        	this.router = opts.router;
+  		}
 	});
 });
