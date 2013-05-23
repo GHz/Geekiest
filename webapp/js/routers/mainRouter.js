@@ -24,7 +24,6 @@ function(Backbone,
 			Backbone.history.start({
 				//pushState: false, //HTML PushState
 				root: "/Geekiest/webapp/"
-				//root: appOptions.appRootUrl
 			});
 
 			//this.navigate('splashscreen', {trigger: true, replace: true});

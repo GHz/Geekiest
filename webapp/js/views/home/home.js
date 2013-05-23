@@ -1,6 +1,6 @@
 define([
 		'backbone',
-		'packages/CustomView'
+		'packages/CustomView',
 
 		],
 function(

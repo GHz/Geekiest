@@ -21,7 +21,11 @@ function($,
         	}
         	else
         	{
-        		this.$el.html(Mustache.to_html(HeaderTemplate));
+        		this.$el.html(Mustache.to_html(HeaderTemplate, {
+                    'settingsBtn': true,
+                    'refreshBtn' : true,
+                    'backBtn': false,
+                }));
         	}
         }
 	});
