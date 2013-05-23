@@ -13,6 +13,10 @@ function($,
 	return  Backbone.View.extend({
 		el: 'body',
       	
+        settingsBtn: true,
+        refreshBtn: false,
+        backBtn: true,
+
       	initialize: function(opts)
         {
         	if($("#main").length > 0 )
@@ -22,11 +26,22 @@ function($,
         	else
         	{
         		this.$el.html(Mustache.to_html(HeaderTemplate, {
-                    'settingsBtn': true,
-                    'refreshBtn' : true,
-                    'backBtn': false,
+                    'settingsBtn': this.settingsBtn,
+                    'refreshBtn' : this.refreshBtn,
+                    'backBtn': this.backBtn,
                 }));
         	}
+
+        },
+
+        events: {
+            'click #backBtn': 'backBtnClick',
+        },
+
+        backBtnClick: function()
+        {
+            this.router.back();
         }
+
 	});
 });

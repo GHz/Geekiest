@@ -2,6 +2,7 @@ define([
 	'backbone',
 	'underscore',
 	'packages/options',
+	'packages/AppRouter',
 	'views/splashscreen/splashscreen',
 	'views/login/login',
 	'views/home/home',
@@ -11,29 +12,29 @@ define([
 function(Backbone,
          _,
          appOptions,
+         AppRouter,
          SlpashScreenPageView,
          LoginPageView,
          HomePageView,
          HowtoPageView,
          TestPageView)
 {
-	return Backbone.Router.extend(
+	return AppRouter.extend(
 	{
 		initialize: function()
 		{
 			Backbone.history.start({
-				//pushState: false, //HTML PushState
+				//pushState: true, //HTML PushState
 				root: "/Geekiest/webapp/"
 			});
-
-			//this.navigate('splashscreen', {trigger: true, replace: true});
 
 		},
 
 		routes:
 		{
             //SplashScreen
-            'splashscreen': 'splashScreenPage',
+           '': 'splashScreenPage',
+           // 'splashscreen': 'splashScreenPage',
 
             //Login
 			'login': 'loginPage',

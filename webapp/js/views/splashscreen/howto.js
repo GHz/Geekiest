@@ -8,16 +8,24 @@ define([
 function(
 		Backbone,
 		Mustache,
-		CustumView,
+		CustomView,
 		HowToTemplate
 ){
-	return  CustumView.extend({
-		el: '#main-content',
+	return  CustomView.extend({
 
         initialize: function(opts)
         {
+        	this.constructor.__super__.initialize.apply(this, opts);
+        	if(this.events)
+        	{
+        		this.events = _.defaults(this.events, CustomView.prototype.events);
+        	}
+        	else
+        	{
+        		this.events = CustomView.prototype.events;
+        	}
+
         	this.router = opts.router;
-        	this.$el.html('serfg');
         },
 
         events: {

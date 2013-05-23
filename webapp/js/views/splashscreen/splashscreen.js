@@ -9,7 +9,6 @@ function(
 		Mustache,
 		CustomView,
 		SplashScreenTemplate
-
 ){
 	return  Backbone.View.extend({
 		el: 'body',
