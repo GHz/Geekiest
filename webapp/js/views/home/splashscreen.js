@@ -35,6 +35,10 @@ function(
         facebookClick: function(e) {
         	e.preventDefault();
 
+        	$('.facebook')
+        		.addClass('refresh')
+        		.html('<img src="img/btn_refresh.png" class="rotate btn_wait" />');
+
         	var self = this;
         	var datas;
 		    FB.login(function(response){
@@ -45,7 +49,6 @@ function(
 					  url: 'http://serene-forest-6114.herokuapp.com/users/login',
 					  data: response,
 					  success: function(response){
-					  	alert(response);
 					  	datas = JSON.parse(response);
 
 					  	localStorage.setItem("userToken", datas.token);
