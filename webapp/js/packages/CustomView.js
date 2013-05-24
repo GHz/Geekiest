@@ -16,21 +16,21 @@ function($,
         settingsBtn: true,
         refreshBtn: false,
         backBtn: true,
+        validateBtn: false,
 
       	initialize: function(opts)
         {
-        	if($("#main").length > 0 )
-        	{
-        		$("#main-content").html("");
-        	}
-        	else
-        	{
-        		this.$el.html(Mustache.to_html(HeaderTemplate, {
-                    'settingsBtn': this.settingsBtn,
-                    'refreshBtn' : this.refreshBtn,
-                    'backBtn': this.backBtn,
-                }));
-        	}
+            $(this.el).undelegate('#settingsBtn', 'click');
+            $(this.el).undelegate('#refreshBtn', 'click');
+            $(this.el).undelegate('#validateBtn', 'click');
+
+    		this.$el.html(Mustache.to_html(HeaderTemplate, {
+                'settingsBtn': this.settingsBtn,
+                'refreshBtn' : this.refreshBtn,
+                'backBtn': this.backBtn,
+                'validateBtn': this.validateBtn
+            }));
+        	
 
         },
 

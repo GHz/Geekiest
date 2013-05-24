@@ -1,0 +1,65 @@
+#usersList
+	list-style: none
+
+	li 
+		@include border-radius(5px)
+		@include background-clip(padding-box)
+		background-color: white
+		@include box-shadow(inset 0 2px 7px rgba(94, 94, 94, 0.27))
+		margin-bottom: 15px
+		border-bottom: 1px solid rgba(0, 0, 0, 0.04)
+		clear: both
+		height: 75px
+
+		&:hover
+			background-color: rgba(255, 255, 255, 0.84)
+
+		img
+			@include border-radius(5px)
+			width: 56px
+			height: 56px
+			margin: 10px 4px 10px 10px
+
+		.text 
+			padding: 12px 0 0 6px
+			margin-right: 20px
+			overflow: hidden
+
+		.name
+			@include opacity(.88)
+			color: #464646
+			font-size: 28px
+			font-weight: bold
+
+		.desc
+			@include opacity(.52)
+			color: #010101
+			font-size: 18px
+			margin-top: 5px
+
+		.name, .desc
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			display: block
+
+
+		.btnList
+			background: #3b5998 url("../img/btnList_bg.png")
+			margin-bottom: 20px
+			border: 1px solid rgba(0, 0, 0, 0.2)
+			border-radius: 5px
+			box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -5px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.3) inset, 0 2px 4px rgba(0, 0, 0, 0.2)
+			color: white
+			display: block
+			font-size: 16px
+			text-decoration: none
+			font-weight: bolder
+			text-align: center
+			text-shadow: 0 -1px rgba(0, 0, 0, 0.2)
+			padding: 21px 11px
+			margin: 7px 10px
+
+			&:hover
+				background-color: #137eb3
+

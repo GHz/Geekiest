@@ -3,28 +3,27 @@ define([
 	'underscore',
 	'packages/options',
 	'packages/AppRouter',
-	'views/splashscreen/splashscreen',
-	'views/login/login',
+	'views/home/splashscreen',
 	'views/home/home',
-	'views/splashscreen/howto',
-	'views/test',
+	'views/home/howto',
+	'views/home/invit',
+	'views/game/sendChallenge',
 ],
 function(Backbone,
          _,
          appOptions,
          AppRouter,
          SlpashScreenPageView,
-         LoginPageView,
          HomePageView,
          HowtoPageView,
-         TestPageView)
+         InvitPageView,
+         SendChallengePageView)
 {
 	return AppRouter.extend(
 	{
 		initialize: function()
 		{
 			Backbone.history.start({
-				//pushState: true, //HTML PushState
 				root: "/Geekiest/webapp/"
 			});
 
@@ -34,30 +33,24 @@ function(Backbone,
 		{
             //SplashScreen
            '': 'splashScreenPage',
-           // 'splashscreen': 'splashScreenPage',
 
-            //Login
-			'login': 'loginPage',
-
-            //Home
+            //Game Dashboard
             'home': 'homePage',
 
             //How To
             'howto': 'howtoPage',
 
+            //Invit
+            'invit': 'invitPage',
+
             //Test
-            'test': 'testPage',
+            'sendchallenge': 'sendChallengePage',
         },
 
 		'splashScreenPage': function()
 		{
             this.splashScreenView = new SlpashScreenPageView({router: this});
 		},
-
-        'loginPage' : function()
-        {
-            this.loginPageView = new LoginPageView({router: this});
-        },
 
 		'homePage': function()
 		{
@@ -67,11 +60,16 @@ function(Backbone,
 		'howtoPage': function()
 		{
             this.howtoPageView = new HowtoPageView({router: this});
+		},		
+
+		'invitPage': function()
+		{
+            this.invitPageView = new InvitPageView({router: this});
 		},
 
-		'testPage': function()
+		'sendChallengePage': function()
 		{
-            this.testPageView = new TestPageView({router: this});
+            this.sendChallengePageView = new SendChallengePageView({router: this});
 		},
 	});
 });
