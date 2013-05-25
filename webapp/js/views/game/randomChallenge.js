@@ -50,6 +50,10 @@ function(
         $('#main-content').html(html);
      },
 
+     events: {
+        'click #refreshBtn': 'fetchData',
+     },
+
     fetchData: function()
       {
           $("#refreshBtn").addClass('rotate');
@@ -69,6 +73,7 @@ function(
     renderThings: function()
     {
       var self = this, thingItem;
+      $(".challenges").empty();
       self.things.each(function(thing, index, things)
       {             
               thingItem = new ThingItemView({

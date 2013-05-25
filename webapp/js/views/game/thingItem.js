@@ -20,7 +20,7 @@ function(
         },
 
         events: {
-                'click .challenge' : 'actionClick'
+                'click .cover' : 'actionClick'
         },
 
         render: function() {

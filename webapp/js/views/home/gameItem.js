@@ -16,11 +16,10 @@ function(
 
         initialize: function()
         {
-
         },
 
         events: {
-                'click .actionInvitGo' : 'actionClick'
+          'click .actionInvitGo' : 'actionClick'
         },
 
         render: function() {
