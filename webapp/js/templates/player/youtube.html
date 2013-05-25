@@ -41,16 +41,18 @@
         });
   }
 
+
   function onPlayerReady(event) {
-    event.target.seekTo(150);
+    event.target.setPlaybackQuality('small');
+    //event.target.playVideo();
   }
 
   var done = false;
   function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
+    /*if (event.data == YT.PlayerState.PLAYING && !done) {
       player.pauseVideo();
       done = true;
-    }
+    }*/
   }
 
 </script>

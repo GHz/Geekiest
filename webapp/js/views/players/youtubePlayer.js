@@ -15,9 +15,14 @@ function($,
 		tagName: 'div',
 
 		isPlaying: false,
+		intervalTimer: null,
+
+		startPicker: 0,
+		endPicker: 0,
         
         initialize : function()
         {
+        	this.endPicker = this.model.duration;
         },
 
         events: {
@@ -36,20 +41,23 @@ function($,
 
         initPicker: function()
         {
-
+        	var self = this;
 		 	$("#videoPicker").slider({
-				from: 480,
-				to: 1020,
-				step: 15,
+				from: 0,
+				to: this.model.duration,
+				step: 1,
 				dimension: '',
 				limits: false,
 				calculate: function( value ){
 					var hours = Math.floor( value / 60 );
 					var mins = ( value - hours*60 );
-					return (hours < 10 ? "0"+hours : hours) + ":" + ( mins == 0 ? "00" : mins );
+					return (hours < 10 ? "0"+hours : hours) + "     :     " + ( mins == 0 ? "00" : mins );
 				},
 				onstatechange: function( value ){
-					console.dir( this );
+					if(!_.isUndefined(player))
+					{
+						self.updateCursorPos(value);
+					}
 				}
 			});
         },
@@ -61,13 +69,57 @@ function($,
         		player.pauseVideo();
         		$('.playpausebtn').removeClass('play');
         		this.isPlaying = false;
+        		clearInterval(this.intervalTimer);
         	}
         	else
         	{
         		player.playVideo();
         		$('.playpausebtn').addClass('play');
         		this.isPlaying = true;
+
+    			var self = this;
+        		this.intervalTimer = setInterval(function(){
+
+
+    				var currentTime = player.getCurrentTime();
+
+    				if(currentTime > self.endPicker || currentTime < self.startPicker)
+    				{
+    					player.seekTo(self.startPicker)
+    				}
+
+    				var pCt = currentTime / self.model.duration * 100;
+				    $('.currentpos').css('left', pCt+"%");
+
+
+				},500);
         	}
+        },
+
+        updateCursorPos: function(value)
+        {
+        	var dataSplit = value.split(";");
+    		this.startPicker = dataSplit[0];
+    		this.endPicker = dataSplit[1];
+
+    		var currentPos = player.getCurrentTime();
+    		var newCurrentPos = currentPos;
+
+    		if(currentPos<this.startPicker)
+    		{
+    			newCurrentPos = this.startPicker;
+    		}
+    		else if(currentPos>this.endPicker)
+    		{
+    			newCurrentPos = this.endPicker;
+    		}
+
+    		player.seekTo(newCurrentPos);
+
+			var pCt = newCurrentPos / this.model.duration * 100;
+		    $('.currentpos').css('left', pCt+"%");
         }
+
+
 	});
 });

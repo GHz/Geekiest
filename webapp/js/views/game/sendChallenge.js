@@ -44,10 +44,10 @@ function($,
         		model: {
 					"picker": true,
 					"height": "230px",
-					"video-id": "mLdqKIj3-A0"
+					"video-id": "V6nbFZtxAL4",
+                    'duration': '340'
         		}
         	});
-
 
         	var html = Mustache.to_html(SendChallengeTemplate, {});
 
