@@ -43,6 +43,8 @@ function(
         {
                 e.preventDefault();
 
+                console.log(FB)
+
                 var self = this;
                 FB.ui({method: 'apprequests',
                     message: 'My Great Request',

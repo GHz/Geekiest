@@ -14,6 +14,8 @@
 <div class="copyright">COPYRIGHT  ©2013 THS</div>
 <div id="fb-root"></div>
 <script>
+if(_.isUndefined(window.fbAsyncInit) )
+{
   window.fbAsyncInit = function() {
     FB.init({
     appId      : '340107129425326', // App ID
@@ -34,7 +36,6 @@
    ref.parentNode.insertBefore(js, ref);
  }(document));
 
-
-
+}
 
 </script>

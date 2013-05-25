@@ -31,7 +31,7 @@ function($,
                 'validateBtn': this.validateBtn
             }));
         	
-
+            
         },
 
         events: {

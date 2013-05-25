@@ -58,7 +58,6 @@ function(
                 },
                 success: function () {
                     $("#refreshBtn").removeClass('rotate');
-                    console.log(self.friends)
                     self.render();
                 }    
             });
@@ -85,6 +84,7 @@ function(
 
         validateClick: function(e)
         {
+            this.undelegateEvents();
             this.router.navigate("home", {trigger: true, replace: true});
         }
 	});

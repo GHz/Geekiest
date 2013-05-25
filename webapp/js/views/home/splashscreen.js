@@ -50,10 +50,10 @@ function(
 					  data: response,
 					  success: function(response){
 					  	var datas = JSON.parse(response);
-					  	console.log(response);
 					  	localStorage.setItem("userToken", datas.token);
 					  	localStorage.setItem("userName", datas["name"]);
 					  	localStorage.setItem('userAvatar', datas.avatar);
+					  	localStorage.setItem('userId', datas.id);
 
 					  	self.router.navigate("invit", {trigger: true, replace: true});
 					  }

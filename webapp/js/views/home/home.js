@@ -36,6 +36,10 @@ function(
 
 	 },
 
+   events: {
+    'click .findFriend' : 'fiendFriencClick' 
+   },
+
    render: function()
    {
       var html = Mustache.to_html(HomeTemplate, {
@@ -43,6 +47,12 @@ function(
       });
 
       $('#main-content').html(html);
+   },
+
+   fiendFriencClick : function(e)
+   {
+      e.preventDefault();
+      this.router.navigate("invit", {trigger: true, replace: true});
    }
 
 	});
