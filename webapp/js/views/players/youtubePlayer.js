@@ -83,13 +83,15 @@ function($,
 
     				var currentTime = player.getCurrentTime();
 
+    				var pCt = currentTime / self.model.duration * 100;
+				    $('.currentpos').css('left', pCt+"%");
+
     				if(currentTime > self.endPicker || currentTime < self.startPicker)
     				{
     					player.seekTo(self.startPicker)
     				}
 
-    				var pCt = currentTime / self.model.duration * 100;
-				    $('.currentpos').css('left', pCt+"%");
+
 
 
 				},500);
