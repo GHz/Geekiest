@@ -8,11 +8,11 @@
 
   {{#picker}}
   <div class="videoPickerWrapper">
-    <input id="videoPicker" type="slider" class="hide" name="area" value="0;720" />
+    <input id="videoPicker" type="slider" class="hide" name="area" value="{{start}};{{end}}" />
   </div>
   {{/picker}}
 </article>
-
+{{end}}
 
 <script>
   // Loads the IFrame Player API code asynchronously.
@@ -26,12 +26,15 @@
   var player;
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-    height: '{{height}}',
-    videoId: '{{video-id}}',
+    height: '230px',
+    videoId: '{{youtube_id}}',
     playerVars: { 
       'autoplay': 0, 
       'autohide': 1,
-      'showinfo': 0 
+      'showinfo': 0 ,
+      'showsearch ': 0,
+      'iv_load_policy' : 3,
+      'start': {{start}}
     },
 
     events: {
@@ -44,7 +47,6 @@
 
   function onPlayerReady(event) {
     event.target.setPlaybackQuality('small');
-    //event.target.playVideo();
   }
 
   var done = false;

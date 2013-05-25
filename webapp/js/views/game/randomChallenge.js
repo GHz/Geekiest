@@ -58,12 +58,12 @@ function(
       {
           $("#refreshBtn").addClass('rotate');
           var self = this;
+          this.things.reset();
           this.things.fetch({
               error: function () {
                   alert("error!!"); 
               },
               success: function (e) {
-                console.log(e)
                   $("#refreshBtn").removeClass('rotate');
                   self.renderThings();
               }    
@@ -78,7 +78,8 @@ function(
       {             
               thingItem = new ThingItemView({
                     model: thing,
-                    collection: self.things
+                    collection: self.things,
+                    router: self.router
               });
 
               $(".challenges").append(thingItem.render().el);

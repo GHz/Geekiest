@@ -25,7 +25,10 @@ function($,
         
         initialize : function()
         {
-        	this.endPicker = this.model.duration;
+            eval(" this.model = " + this.model);
+
+            this.startPicker = this.model.start;
+            this.endPicker = this.model.end;
         },
 
         events: {
@@ -35,7 +38,22 @@ function($,
 
         render: function()
         {
-        	var html = Mustache.to_html(YoutubePlayerTemplate,this.model);
+            console.log(this.model)
+            console.log(_.extend(
+                this.model,
+                {
+                    picker: true,
+                    start: 10,
+                    end: 20
+                }))
+        	var html = Mustache.to_html(YoutubePlayerTemplate, _.extend(
+                this.model,
+                {
+                    picker: true,
+                    start: this.startPicker,
+                    end: this.endPicker
+                })
+            );
 
 			this.$el.html(html);
 
@@ -47,7 +65,7 @@ function($,
         	var self = this;
 		 	$("#videoPicker").slider({
 				from: 0,
-				to: this.model.duration,
+				to: this.model.youtube_length,
 				step: 1,
 				dimension: '',
 				limits: false,
@@ -63,6 +81,9 @@ function($,
 					}
 				}
 			});
+
+            var pCt = self.model.start / self.model.youtube_length * 100;
+            $('.currentpos').css('left', pCt+"%");
         },
 
         playPauseBtnClick: function()
@@ -86,29 +107,32 @@ function($,
 
     				var currentTime = player.getCurrentTime();
 
-    				if(currentTime >= self.endPicker || currentTime <= self.startPicker)
+    				if(currentTime > self.endPicker || currentTime < self.startPicker)
     				{
+                        console.log ( currentTime + ' - ' + self.endPicker + '-' + self.startPicker)
     					player.seekTo(self.startPicker);
     				}
 
 					if(!this.isChanging)
 					{
-    					var pCt = currentTime / self.model.duration * 100;
+    					var pCt = currentTime / self.model.youtube_length * 100;
 				    	$('.currentpos').css('left', pCt+"%");
 					}
 
-				},500);
+				},100);
         	}
         },
 
         updateCursorPos: function(value)
         {
-        	this.isChanging = true;
+
         	var dataSplit = value.split(";");
     		this.startPicker = dataSplit[0];
     		this.endPicker = dataSplit[1];
 
     		var currentPos = player.getCurrentTime();
+
+            console.log(currentPos);
     		this.newCurrentPos = currentPos;
 
     		if(currentPos<this.startPicker)
@@ -120,7 +144,7 @@ function($,
     			this.newCurrentPos = this.endPicker;
     		}
 
-			var pCt = this.newCurrentPos / this.model.duration * 100;
+			var pCt = this.newCurrentPos / this.model.youtube_length * 100;
 		    $('.currentpos').css('left', pCt+"%");
 
 		    if(!this.isInit)
@@ -131,7 +155,6 @@ function($,
 		    }
 
     		player.seekTo(this.newCurrentPos);
-    		this.isChanging = false;
         }
 
 

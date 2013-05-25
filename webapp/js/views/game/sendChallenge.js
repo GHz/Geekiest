@@ -35,17 +35,18 @@ function($,
 
         	this.router = opts.router;
 
+            this.model = localStorage.getItem("currentThing");
+
     		this.render();
         },
 
         render: function()
         {
         	this.mediaPlayer = new YoutubePlayerView({
-        		model: {
+        		model: this.model,
+                data :  {
 					"picker": true,
 					"height": "230px",
-					"video-id": "V6nbFZtxAL4",
-                    'duration': '340'
         		}
         	});
 

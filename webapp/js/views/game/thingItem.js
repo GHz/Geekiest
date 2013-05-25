@@ -41,6 +41,10 @@ function(
         actionClick: function(e)
         {
                 e.preventDefault();
+
+                localStorage.setItem("currentThing", JSON.stringify(this.model.toJSON()));
+
+                this.options.router.navigate("sendchallenge", {trigger: true, replace: true});
         }  
 	});
 });
