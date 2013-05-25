@@ -21,6 +21,7 @@ function($,
 		endPicker: 0,
 		newCurrentPos: 0,
 		isChanging: false,
+		isInit: false,
         
         initialize : function()
         {
@@ -121,6 +122,13 @@ function($,
 
 			var pCt = this.newCurrentPos / this.model.duration * 100;
 		    $('.currentpos').css('left', pCt+"%");
+
+		    if(!this.isInit)
+		    {
+		    	$('.playpausebtn').addClass('play');
+		    	this.isPlaying = true;
+		    	this.isInit = true;
+		    }
 
     		player.seekTo(this.newCurrentPos);
     		this.isChanging = false;
