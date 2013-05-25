@@ -116,10 +116,10 @@ function($,
     			newCurrentPos = this.endPicker;
     		}
 
-    		player.seekTo(newCurrentPos);
-
 			var pCt = newCurrentPos / this.model.duration * 100;
 		    $('.currentpos').css('left', pCt+"%");
+
+    		player.seekTo(newCurrentPos);
         }
 
 
