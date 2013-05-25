@@ -19,6 +19,8 @@ function($,
 
 		startPicker: 0,
 		endPicker: 0,
+		newCurrentPos: 0,
+		isChanging: false,
         
         initialize : function()
         {
@@ -83,16 +85,16 @@ function($,
 
     				var currentTime = player.getCurrentTime();
 
-    				var pCt = currentTime / self.model.duration * 100;
-				    $('.currentpos').css('left', pCt+"%");
-
-    				if(currentTime > self.endPicker || currentTime < self.startPicker)
+    				if(currentTime >= self.endPicker || currentTime <= self.startPicker)
     				{
-    					player.seekTo(self.startPicker)
+    					player.seekTo(self.startPicker);
     				}
 
-
-
+					if(!this.isChanging)
+					{
+    					var pCt = currentTime / self.model.duration * 100;
+				    	$('.currentpos').css('left', pCt+"%");
+					}
 
 				},500);
         	}
@@ -100,26 +102,28 @@ function($,
 
         updateCursorPos: function(value)
         {
+        	this.isChanging = true;
         	var dataSplit = value.split(";");
     		this.startPicker = dataSplit[0];
     		this.endPicker = dataSplit[1];
 
     		var currentPos = player.getCurrentTime();
-    		var newCurrentPos = currentPos;
+    		this.newCurrentPos = currentPos;
 
     		if(currentPos<this.startPicker)
     		{
-    			newCurrentPos = this.startPicker;
+    			this.newCurrentPos = this.startPicker;
     		}
     		else if(currentPos>this.endPicker)
     		{
-    			newCurrentPos = this.endPicker;
+    			this.newCurrentPos = this.endPicker;
     		}
 
-			var pCt = newCurrentPos / this.model.duration * 100;
+			var pCt = this.newCurrentPos / this.model.duration * 100;
 		    $('.currentpos').css('left', pCt+"%");
 
-    		player.seekTo(newCurrentPos);
+    		player.seekTo(this.newCurrentPos);
+    		this.isChanging = false;
         }
 
 
