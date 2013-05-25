@@ -20,6 +20,7 @@ function(
         },
 
         events: {
+                'click .actionInvitGo' : 'actionClick'
         },
 
         render: function() {
@@ -28,12 +29,38 @@ function(
         	
         	var html = Mustache.to_html(UserInvitationItemTemplate, {
         		Name: this.model.get('name'),
-        		Avatar: this.model.get('avatar')
+        		Avatar: this.model.get('avatar'),
+                        isActive: (this.model.get('isActive') == 1) ? true : false,
+                        isFemale: (this.model.get('gender') == 'female') ? true : false
         	});
         	
         	this.$el.html(html);
 
         	return this;
+        },
+
+        actionClick: function(e)
+        {
+                e.preventDefault();
+
+                var self = this;
+                FB.ui({method: 'apprequests',
+                    message: 'My Great Request',
+                    to: this.model.get('id')
+                  }, function(){
+                        $.ajax({
+                          type: "POST",
+                          url: 'http://serene-forest-6114.herokuapp.com/users/invit',
+                          data : {
+                                from: localStorage.getItem('userId'),
+                                to: self.model.get('id')
+                          },
+                          success: function(response){
+                               alert('it works' + response );
+                          }
+                        });                        
+                  });
         }
+        
 	});
 });

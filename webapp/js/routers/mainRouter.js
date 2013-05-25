@@ -8,6 +8,8 @@ define([
 	'views/home/howto',
 	'views/home/invit',
 	'views/game/sendChallenge',
+	'views/game/transition',
+	'views/game/newCustomChallenge'
 ],
 function(Backbone,
          _,
@@ -17,7 +19,10 @@ function(Backbone,
          HomePageView,
          HowtoPageView,
          InvitPageView,
-         SendChallengePageView)
+         SendChallengePageView,
+         TransitionPageView,
+         NewCustomChallengePageView
+         )
 {
 	return AppRouter.extend(
 	{
@@ -43,8 +48,14 @@ function(Backbone,
             //Invit
             'invit': 'invitPage',
 
-            //Test
+            //Send Challenge to your friend
             'sendchallenge': 'sendChallengePage',
+
+            //Transition beetween game views
+            'transition' : 'transitionPage',
+
+            //Custom Challenge
+            'newcustomchallenge' : 'newCustomChallengePage' 
         },
 
 		'splashScreenPage': function()
@@ -71,5 +82,15 @@ function(Backbone,
 		{
             this.sendChallengePageView = new SendChallengePageView({router: this});
 		},
+
+		'transitionPage': function()
+		{
+            this.transitionPagePageView = new TransitionPageView({router: this});
+		},
+
+		'newCustomChallengePage': function()
+		{
+            this.newCustomChallengePageView = new NewCustomChallengePageView({router: this});
+		}
 	});
 });

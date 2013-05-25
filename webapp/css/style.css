@@ -36,20 +36,36 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 10, ../sass/style/_mixins.sass */
 .right { float: right; }
 
+/* line 13, ../sass/style/_mixins.sass */
+.clear { clear: both; }
+
+/* line 16, ../sass/style/_mixins.sass */
+.tiiitle { color: #7a7a7a; text-align: center; height: 45px; font-size: 16px; font-weight: bold; padding: 0 18px; }
+/* line 24, ../sass/style/_mixins.sass */
+.tiiitle .title { position: relative; top: -7px; background-color: #f0ebe0; padding: 0 14px; }
+/* line 30, ../sass/style/_mixins.sass */
+.tiiitle .hor_lign { display: block; height: 1px; width: 100%; background-color: #bdbab1; position: relative; top: 50%; left: 0px; }
+
 @font-face { font-family: "acensregular"; src: url("../fonts/acens-webfont.eot"); src: url("../fonts/acens-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/acens-webfont.woff") format("woff"), url("../fonts/acens-webfont.ttf") format("truetype"), url("../fonts/acens-webfont.svg#acensregular") format("svg"); font-weight: normal; font-style: normal; }
 
 @viewport { width: device-width; zoom: 1; }
 
-/* line 26, ../sass/style/_mixins.sass */
+/* line 51, ../sass/style/_mixins.sass */
 .btn.rotate img { width: auto; }
 
-/* line 30, ../sass/style/_mixins.sass */
+/* line 55, ../sass/style/_mixins.sass */
 .rotate { -webkit-animation: rotation 2s infinite linear; }
 
-@-webkit-keyframes rotation { /* line 34, ../sass/style/_mixins.sass */
+@-webkit-keyframes rotation { /* line 59, ../sass/style/_mixins.sass */
   from { -webkit-transform: rotate(0deg); }
-  /* line 36, ../sass/style/_mixins.sass */
+  /* line 61, ../sass/style/_mixins.sass */
   to { -webkit-transform: rotate(359deg); } }
+
+/* line 64, ../sass/style/_mixins.sass */
+.center { text-align: center; }
+
+/* line 1, ../sass/style/_forms.sass */
+textarea { border: 1px solid rgba(44, 44, 44, 0.13); -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; background-color: rgba(255, 255, 255, 0.45); -webkit-box-shadow: inset 3px 4px 8px rgba(0, 0, 0, 0.12); -moz-box-shadow: inset 3px 4px 8px rgba(0, 0, 0, 0.12); box-shadow: inset 3px 4px 8px rgba(0, 0, 0, 0.12); color: #9c9b98; font-family: "Acens"; font-size: 26px; padding: 2px 8px; line-height: 24px; }
 
 /* line 1, ../sass/style/_header.sass */
 body { width: 100%; background: #f0ebe0 url("../img/main_bg.JPG"); color: #191919; font-family: "acensregular", sans-serif; }
@@ -77,6 +93,31 @@ header.main img { width: auto; height: 42px; top: 13px; position: relative; curs
 
 /* line 59, ../sass/style/_header.sass */
 iframe { width: 100%; }
+
+/* line 1, ../sass/style/_usersList.sass */
+#usersList { list-style: none; }
+/* line 4, ../sass/style/_usersList.sass */
+#usersList li { -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; background-color: white; -webkit-box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); -moz-box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); margin-bottom: 15px; border-bottom: 1px solid rgba(0, 0, 0, 0.04); clear: both; height: 75px; }
+/* line 14, ../sass/style/_usersList.sass */
+#usersList li:hover { background-color: rgba(255, 255, 255, 0.84); }
+/* line 17, ../sass/style/_usersList.sass */
+#usersList li img { -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; width: 56px; height: 56px; margin: 10px 4px 10px 10px; }
+/* line 23, ../sass/style/_usersList.sass */
+#usersList li .text { padding: 12px 0 0 6px; margin-right: 20px; overflow: hidden; }
+/* line 28, ../sass/style/_usersList.sass */
+#usersList li .name { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=88); opacity: 0.88; color: #464646; font-size: 28px; font-weight: bold; }
+/* line 34, ../sass/style/_usersList.sass */
+#usersList li .desc { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=52); opacity: 0.52; color: #010101; font-size: 18px; margin-top: 5px; }
+/* line 40, ../sass/style/_usersList.sass */
+#usersList li .name, #usersList li .desc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+/* line 47, ../sass/style/_usersList.sass */
+#usersList li .btnList { background: #3b5998 url("../img/btnList_bg.png"); margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -5px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.3) inset, 0 2px 4px rgba(0, 0, 0, 0.2); color: white; display: block; font-size: 16px; text-decoration: none; font-weight: bolder; text-align: center; text-shadow: 0 -1px rgba(0, 0, 0, 0.2); padding: 21px 11px; margin: 7px 10px; }
+/* line 63, ../sass/style/_usersList.sass */
+#usersList li .btnList:hover { background-color: #137eb3; }
+/* line 66, ../sass/style/_usersList.sass */
+#usersList li .btnList.go { background-color: #42b748; }
+/* line 69, ../sass/style/_usersList.sass */
+#usersList li .btnList.go:hover { background-color: #318836; }
 
 /* line 1, ../sass/style/_invitFriends.sass */
 .invitFriends { background: #3b5998; }
@@ -108,26 +149,66 @@ iframe { width: 100%; }
 /* line 60, ../sass/style/_player.sass */
 .videoPickerWrapper { background: #2c2c2c; height: 70px; padding: 16px 18px; }
 
-/* line 1, ../sass/style/_usersList.sass */
-#usersList { list-style: none; }
-/* line 4, ../sass/style/_usersList.sass */
-#usersList li { -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; background-color: white; -webkit-box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); -moz-box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); box-shadow: inset 0 2px 7px rgba(94, 94, 94, 0.27); margin-bottom: 15px; border-bottom: 1px solid rgba(0, 0, 0, 0.04); clear: both; height: 75px; }
-/* line 14, ../sass/style/_usersList.sass */
-#usersList li:hover { background-color: rgba(255, 255, 255, 0.84); }
-/* line 17, ../sass/style/_usersList.sass */
-#usersList li img { -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; width: 56px; height: 56px; margin: 10px 4px 10px 10px; }
-/* line 23, ../sass/style/_usersList.sass */
-#usersList li .text { padding: 12px 0 0 6px; margin-right: 20px; overflow: hidden; }
-/* line 28, ../sass/style/_usersList.sass */
-#usersList li .name { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=88); opacity: 0.88; color: #464646; font-size: 28px; font-weight: bold; }
-/* line 34, ../sass/style/_usersList.sass */
-#usersList li .desc { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=52); opacity: 0.52; color: #010101; font-size: 18px; margin-top: 5px; }
-/* line 40, ../sass/style/_usersList.sass */
-#usersList li .name, #usersList li .desc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
-/* line 47, ../sass/style/_usersList.sass */
-#usersList li .btnList { background: #3b5998 url("../img/btnList_bg.png"); margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 5px; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -5px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.3) inset, 0 2px 4px rgba(0, 0, 0, 0.2); color: white; display: block; font-size: 16px; text-decoration: none; font-weight: bolder; text-align: center; text-shadow: 0 -1px rgba(0, 0, 0, 0.2); padding: 21px 11px; margin: 7px 10px; }
-/* line 63, ../sass/style/_usersList.sass */
-#usersList li .btnList:hover { background-color: #137eb3; }
+/* line 65, ../sass/style/_player.sass */
+.sendChallenge { margin-top: 20px; }
+/* line 68, ../sass/style/_player.sass */
+.sendChallenge .avatar { position: absolute; }
+/* line 71, ../sass/style/_player.sass */
+.sendChallenge .avatar img { height: 70px; }
+/* line 74, ../sass/style/_player.sass */
+.sendChallenge .comment { position: absolute; left: 100px; right: 18px; }
+/* line 79, ../sass/style/_player.sass */
+.sendChallenge .comment textarea { width: 100%; height: 130px; }
+/* line 83, ../sass/style/_player.sass */
+.sendChallenge .sendchall { background: #5fac63; padding: 18px 7px; margin-top: 15px; }
+
+/* line 2, ../sass/style/_home.sass */
+.homeDashboard .infos { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=51); opacity: 0.51; background-color: white; -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=66); opacity: 0.66; color: #636363; font-size: 22px; padding: 10px; }
+
+/* line 1, ../sass/style/_transition.sass */
+#transition { width: 100%; height: 100%; background: url("../img/transition_bg.JPG"); position: absolute; background-position: center center; background-repeat: repeat; text-align: center; color: white; font-family: "Acens"; }
+/* line 12, ../sass/style/_transition.sass */
+#transition.green { background: url("../img/transition_bg_green.JPG"); }
+/* line 15, ../sass/style/_transition.sass */
+#transition.red { background: url("../img/transition_bg_red.JPG"); }
+/* line 19, ../sass/style/_transition.sass */
+#transition * { -webkit-transition: all 1s ease-in-out; -moz-transition: all 1s ease-in-out; -o-transition: all 1s ease-in-out; transition: all 1s ease-in-out; }
+/* line 23, ../sass/style/_transition.sass */
+#transition .title { font-size: 42px; text-shadow: 6px 10px 29px rgba(0, 0, 0, 0.45); position: absolute; width: 100%; top: 50px; }
+/* line 31, ../sass/style/_transition.sass */
+#transition .player { position: absolute; }
+/* line 33, ../sass/style/_transition.sass */
+#transition .player .card { width: 130px; margin-bottom: 18px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; background-color: white; -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); box-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); }
+/* line 40, ../sass/style/_transition.sass */
+#transition .player .card .avatar { -moz-border-radius-topleft: 3px; -webkit-border-top-left-radius: 3px; border-top-left-radius: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-right-radius: 3px; border-top-right-radius: 3px; -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.35); -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.35); box-shadow: 0 5px 5px rgba(0, 0, 0, 0.35); width: 100%; height: auto; }
+/* line 46, ../sass/style/_transition.sass */
+#transition .player .card .data { height: 25px; }
+/* line 49, ../sass/style/_transition.sass */
+#transition .player .pseudo { font-size: 19px; }
+/* line 52, ../sass/style/_transition.sass */
+#transition .player.left { left: 20px; }
+/* line 55, ../sass/style/_transition.sass */
+#transition .player.right { right: 20px; }
+/* line 58, ../sass/style/_transition.sass */
+#transition .vs { position: absolute; top: 140px; width: 100%; }
+/* line 64, ../sass/style/_transition.sass */
+#transition .vsLabel { position: absolute; width: 100%; top: 70px; font-size: 30px; font-weight: bold; text-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); }
+/* line 74, ../sass/style/_transition.sass */
+#transition .subtitle { position: absolute; width: 100%; top: 390px; }
+/* line 80, ../sass/style/_transition.sass */
+#transition .subtitle.round .txt { font-size: 60px; text-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); }
+/* line 84, ../sass/style/_transition.sass */
+#transition .subtitle.round .number { font-size: 180px; text-shadow: 0 5px 5px rgba(0, 0, 0, 0.34); }
+/* line 89, ../sass/style/_transition.sass */
+#transition.NoAnimate .title { top: -100px; }
+/* line 93, ../sass/style/_transition.sass */
+#transition.NoAnimate .player.left { left: -200px; }
+/* line 96, ../sass/style/_transition.sass */
+#transition.NoAnimate .player.right { right: -200px; }
+/* line 99, ../sass/style/_transition.sass */
+#transition.NoAnimate .vsLabel { top: -200px; }
+/* line 102, ../sass/style/_transition.sass */
+#transition.NoAnimate .subtitle { top: 800px; }
 
 /* line 1, ../sass/style/_splashscreen.sass */
 header.splashscreen { position: relative; text-align: center; color: white; }
@@ -154,6 +235,25 @@ header.splashscreen h2 { font-size: 20px; }
 /* line 63, ../sass/style/_splashscreen.sass */
 .copyright { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=32); opacity: 0.32; color: #191919; position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 21px; }
 
+/* line 1, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge { color: reds; text-align: center; }
+/* line 5, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .types { margin-top: 30px; }
+/* line 8, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type { float: left; font-weight: bold; width: 45%; position: relative; margin: 7px; }
+/* line 15, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type .icon { width: 100%; }
+/* line 18, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type.movies { color: #b28dbf; }
+/* line 21, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type.tvshows { color: #8ebbd3; }
+/* line 24, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type.videogames { color: #da89a7; }
+/* line 27, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type.comics { color: #d4a13c; }
+/* line 30, ../sass/style/_newCustomChallenge.sass */
+.newCustomChallenge .type p { font-size: 24px; }
+
 /* line 1, ../sass/vendors/_jquery.slider.min.sass */
 .jslider { display: block; width: 100%; position: relative; top: 0.6em; }
 /* line 8, ../sass/vendors/_jquery.slider.min.sass */
@@ -177,7 +277,7 @@ header.splashscreen h2 { font-size: 20px; }
 /* line 49, ../sass/vendors/_jquery.slider.min.sass */
 .jslider .jslider-bg .r { width: 10%; left: 90%; margin-top: 6px; background-position: right center; background: url("../img/slide_empty_bg.png"); height: 13px; background-position: right 0; }
 /* line 57, ../sass/vendors/_jquery.slider.min.sass */
-.jslider .jslider-bg .v { position: absolute; width: 60%; left: 20%; top: 0; background-position: right center; background-strech: 100% 100%; background: url("../img/slide_full_bg.png"); height: 12px; background-repeat: repeat-x; }
+.jslider .jslider-bg .v { position: absolute; width: 60%; left: 20%; top: 0; background-size: 100%; background-position: right center; background-strech: 100% 100%; background: url("../img/slide_full_bg.png"); height: 12px; background-size: 100% 100%; }
 /* line 70, ../sass/vendors/_jquery.slider.min.sass */
 .jslider .jslider-bg .currentpos { position: absolute; left: 0%; top: 2px; background: white; height: 10px; width: 10px; -webkit-border-radius: 50%; -moz-border-radius: 50%; -ms-border-radius: 50%; -o-border-radius: 50%; border-radius: 50%; }
 /* line 79, ../sass/vendors/_jquery.slider.min.sass */

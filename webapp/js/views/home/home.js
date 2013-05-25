@@ -1,10 +1,14 @@
 define([
 		'backbone',
+    'mustache',
+    'text!templates/home/home.html',
 		'packages/CustomView',
 
 		],
 function(
 		Backbone,
+    Mustache,
+    HomeTemplate,
 		CustomView
 ){
 	return  CustomView.extend({
@@ -28,15 +32,18 @@ function(
 
     	this.router = opts.router;
 
-      $('#main-content').html('sdfvgbffd');
-	 },
- 
-  		events : {
-  			'click #settingsBtn': 'sezedfg',
-  		},
+      this.render();
 
-  		sezedfg: function() {
-  			console.log('edfgsdf');
-  		}
+	 },
+
+   render: function()
+   {
+      var html = Mustache.to_html(HomeTemplate, {
+        userPseudo: localStorage.getItem('userPseudo')
+      });
+
+      $('#main-content').html(html);
+   }
+
 	});
 });

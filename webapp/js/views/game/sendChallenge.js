@@ -49,7 +49,9 @@ function($,
         		}
         	});
 
-        	var html = Mustache.to_html(SendChallengeTemplate, {});
+        	var html = Mustache.to_html(SendChallengeTemplate, {
+                'userAvatar' : localStorage.getItem('userAvatar')
+            });
 
         	$('#main-content').html(html);
 

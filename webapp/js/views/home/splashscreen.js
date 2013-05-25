@@ -49,8 +49,8 @@ function(
 					  url: 'http://serene-forest-6114.herokuapp.com/users/login',
 					  data: response,
 					  success: function(response){
-					  	datas = JSON.parse(response);
-
+					  	var datas = JSON.parse(response);
+					  	console.log(response);
 					  	localStorage.setItem("userToken", datas.token);
 					  	localStorage.setItem("userName", datas["name"]);
 					  	localStorage.setItem('userAvatar', datas.avatar);
@@ -60,7 +60,7 @@ function(
 					});
 
 		        }
-		      },{scope : 'email,read_friendlists'});
+		      },{scope : 'email,read_friendlists,user_status'});
         },
 
         howtoClick: function(e) {	

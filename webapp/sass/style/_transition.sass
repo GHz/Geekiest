@@ -1,0 +1,103 @@
+#transition
+	width: 100%
+	height: 100%
+	background: url('../img/transition_bg.JPG')
+	position: absolute
+	background-position: center center
+	background-repeat: repeat
+	text-align: center
+	color: #fff
+	font-family: "Acens"
+
+	&.green
+		background: url('../img/transition_bg_green.JPG')
+
+	&.red
+		background: url('../img/transition_bg_red.JPG')
+
+
+	*
+		+transition(all 1s ease-in-out)
+
+	//Title
+	.title
+		font-size: 42px
+		@include text-shadow(6px 10px 29px rgba(0,0,0,.45))
+		position: absolute
+		width: 100%
+		top: 50px
+
+	//THE VS	
+	.player
+		position: absolute
+		.card
+			width: 130px
+			margin-bottom: 18px
+			+border-radius(3px)
+			background-color: #fff
+			@include box-shadow(0 5px 5px rgba(0,0,0,.34))
+
+			.avatar
+				+border-top-radius(3px)
+				@include box-shadow(0 5px 5px rgba(0,0,0,.35))
+				width: 100%
+				height: auto
+
+			.data
+				height: 25px
+
+		.pseudo
+			font-size: 19px
+
+		&.left
+			left: 20px
+
+		&.right
+			right: 20px
+
+	.vs
+		position: absolute
+		top: 140px
+		width: 100%
+
+
+	.vsLabel
+		position: absolute
+		width: 100%
+		top: 70px
+		font-size: 30px
+		font-weight: bold
+		@include text-shadow(0 5px 5px rgba(0,0,0,.34))
+
+
+	//Subtitle
+	.subtitle
+		position: absolute
+		width: 100%
+		top: 390px
+
+		&.round
+			.txt
+				font-size: 60px
+				@include text-shadow(0 5px 5px rgba(0,0,0,.34))
+
+			.number
+				font-size: 180px
+				@include text-shadow(0 5px 5px rgba(0,0,0,.34))
+
+	&.NoAnimate
+		.title
+			top: -100px
+
+
+		.player.left
+			left: -200px
+
+		.player.right
+			right: -200px
+
+		.vsLabel
+			top: -200px
+
+		.subtitle
+			top: 800px

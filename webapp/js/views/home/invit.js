@@ -58,6 +58,7 @@ function(
                 },
                 success: function () {
                     $("#refreshBtn").removeClass('rotate');
+                    console.log(self.friends)
                     self.render();
                 }    
             });
