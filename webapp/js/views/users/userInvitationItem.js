@@ -43,23 +43,34 @@ function(
         {
                 e.preventDefault();
 
-                var self = this;
-                FB.ui({method: 'apprequests',
-                    message: 'My Great Request',
-                    to: this.model.get('id')
-                  }, function(){
-                        $.ajax({
-                          type: "POST",
-                          url: 'http://serene-forest-6114.herokuapp.com/users/invit',
-                          data : {
-                                from: localStorage.getItem('userId'),
-                                to: self.model.get('id')
-                          },
-                          success: function(response){
-                               self.$el.fadeOut();
-                          }
-                        });                        
-                  });
+                if(this.$('.go').length > 0)
+                {
+
+                  return;
+                }
+                else
+                {
+                  var self = this;
+                  FB.ui({method: 'apprequests',
+                      message: 'My Great Request',
+                      to: this.model.get('id')
+                    }, function(){
+                          $.ajax({
+                            type: "POST",
+                            url: 'http://serene-forest-6114.herokuapp.com/users/invit',
+                            data : {
+                                  from: localStorage.getItem('userId'),
+                                  to: self.model.get('id')
+                            },
+                            success: function(response){
+                                 self.$el.fadeOut();
+                            }
+                          });                        
+                    });
+
+                }
+
+                
         }
         
 	});

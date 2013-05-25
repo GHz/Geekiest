@@ -33,7 +33,8 @@ function($,
 
         events: {
         	'click .playpausebtn' : 'playPauseBtnClick',
-        	'click .overlay' : 'playPauseBtnClick'
+        	'click .overlay' : 'playPauseBtnClick',
+            'click .sendchall' : 'sendChallengeClick'
         },
 
         render: function()
@@ -155,8 +156,34 @@ function($,
 		    }
 
     		player.seekTo(this.newCurrentPos);
-        }
+        },
 
+        sendChallengeClick: function(e)
+        {
+            e.preventDefault();
+
+          /*  $.ajax({
+                  type: "POST",
+                  url: 'http://serene-forest-6114.herokuapp.com/users/send_challenge',
+                  data: {
+                    thing_id: this.model.id,
+                    start_video: this.startPicker,
+                    end_video: this.endPicker,
+                    message: $('textarea .form').text,
+
+                  },
+                  success: function(response){
+                    var datas = JSON.parse(response);
+                    localStorage.setItem("userToken", datas.token);
+                    localStorage.setItem("userName", datas["name"]);
+                    localStorage.setItem('userAvatar', datas.avatar);
+                    localStorage.setItem('userId', datas.id);
+
+                    self.router.navigate("invit", {trigger: true, replace: true});
+                  }
+                });*/
+
+        }
 
 	});
 });

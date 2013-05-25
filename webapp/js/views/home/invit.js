@@ -66,6 +66,7 @@ function(
         render: function()
         {
                 var self = this, friendItem;
+                $("#usersList").html('');
                 self.friends.each(function(friend, index, friends)
                 {             
                         friendItem = new UserInvitationItemView({
