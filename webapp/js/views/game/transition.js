@@ -11,7 +11,7 @@ function($,
 	TransitionTemplate
 	){
 	return Backbone.View.extend({
-		el: 'body',
+		el: '.app',
         className: 'zerf',
         
         initialize : function(opts)

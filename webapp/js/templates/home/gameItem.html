@@ -1,0 +1,18 @@
+<div><img src="{{Avatar}}" class="left" /> 
+
+<a href="#" class="btnList right {{#isActive}}go{{/isActive}} actionInvitGo" >
+	{{#isActive}}GO&#32;&#32;&#32;!{{/isActive}}
+	{{^isActive}}INVIT{{/isActive}}
+</a>
+
+<div class="text">
+	<p class="name">{{Name}} </p>
+	<p class="desc">
+		{{#isActive}}
+			Ready to beat {{#isFemale}}her{{/isFemale}}{{^isFemale}}him{{/isFemale}} ?
+		{{/isActive}}
+		{{^isActive}}
+			Challenge {{#isFemale}}her{{/isFemale}}{{^isFemale}}him{{/isFemale}}, if you dare ! 
+		{{/isActive}}
+	</p>
+</div>

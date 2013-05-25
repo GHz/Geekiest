@@ -16,7 +16,7 @@ function($,
 	SendChallengeTemplate
 	){
 	return CustomView.extend({
-		el: 'body',
+		el: '.app',
         
         backBtn: true,
         settingsBtn: true,

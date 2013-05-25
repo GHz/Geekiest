@@ -11,12 +11,13 @@ function($,
 	HeaderTemplate
 ){
 	return  Backbone.View.extend({
-		el: 'body',
+		el: '.app',
       	
         settingsBtn: true,
         refreshBtn: false,
         backBtn: true,
         validateBtn: false,
+        refreshRightBtn: false,
 
       	initialize: function(opts)
         {
@@ -28,7 +29,8 @@ function($,
                 'settingsBtn': this.settingsBtn,
                 'refreshBtn' : this.refreshBtn,
                 'backBtn': this.backBtn,
-                'validateBtn': this.validateBtn
+                'validateBtn': this.validateBtn,
+                'refreshRightBtn': this.refreshRightBtn
             }));
         	
             

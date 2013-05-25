@@ -13,7 +13,7 @@ function(
 ){
     return  CustomView.extend({
 
-    el: 'body',
+    el: '.app',
 
     initialize: function(opts)
     {
