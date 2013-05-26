@@ -33,7 +33,6 @@ function($,
           }
 
           this.router = opts.router;
-console.log(database)
           this.model = database.currentThing;
 
           this.render();

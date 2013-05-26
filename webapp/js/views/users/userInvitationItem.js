@@ -42,7 +42,6 @@ function(
         actionClick: function(e)
         {
                 e.preventDefault();
-                  console.log(this)
                 if(this.$('.btnList ').hasClass('go'))
                 {
                   database.transitionData = {

@@ -61,7 +61,6 @@ function(
           this.things.reset();
           this.things.fetch({
               error: function () {
-                  alert("error!!"); 
               },
               success: function (e) {
                   $("#refreshBtn").removeClass('rotate');

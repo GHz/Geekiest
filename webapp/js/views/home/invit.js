@@ -54,7 +54,6 @@ function(
             var self = this;
             this.friends.fetch({
                 error: function () {
-                    alert("error!!"); 
                 },
                 success: function () {
                     $("#refreshBtn").removeClass('rotate');

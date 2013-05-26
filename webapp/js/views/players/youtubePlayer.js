@@ -101,7 +101,6 @@ function($,
 
     				if(currentTime > self.endPicker || currentTime < self.startPicker)
     				{
-                        console.log ( currentTime + ' - ' + self.endPicker + '-' + self.startPicker)
     					player.seekTo(self.startPicker);
     				}
 
@@ -123,9 +122,8 @@ function($,
     		this.endPicker = dataSplit[1];
 
     		var currentPos = player.getCurrentTime();
-
-            console.log(currentPos);
-    		this.newCurrentPos = currentPos;
+    		
+            this.newCurrentPos = currentPos;
 
     		if(currentPos<this.startPicker)
     		{

@@ -27,7 +27,6 @@ function(
         	if(this.model instanceof Array)
         		return;
         	
-          console.log(this.model)
 
         	var html = Mustache.to_html(UserInvitationItemTemplate, {
         		Name: this.model.get('u1'),
@@ -48,7 +47,7 @@ function(
           e.preventDefault();
 
           database.transitionData = {
-                roundNumber : '1',
+                roundNumber : this.model.get('counter'),
                 special : '' ,
                 message : "Your turn",
 

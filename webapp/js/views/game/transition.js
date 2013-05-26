@@ -109,7 +109,6 @@ function($,
                               game_id: database.currentGame
                         },
                         success: function(){
-                          console.log('dsdsdsd');
                           self.router.navigate("home", {trigger: true, replace: true});
                         }
                       });

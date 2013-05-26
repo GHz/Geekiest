@@ -54,7 +54,7 @@ function($,
 					"picker": true,
 					"height": "230px",
         		})
-        	});s²
+        	});
 
         	var html = Mustache.to_html(SendChallengeTemplate, {
                 'userAvatar' : localStorage.getItem('userAvatar')
@@ -71,7 +71,7 @@ function($,
             e.preventDefault();
 
             var self = this;
-            
+
             $.ajax({
                   type: "POST",
                   url: 'http://serene-forest-6114.herokuapp.com/users/send_challenge',

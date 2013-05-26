@@ -55,10 +55,9 @@ function(
       var self = this;
       this.games.fetch({
           error: function () {
-              alert("error!!"); 
           },
           success: function (e) {
-            console.log(e);
+            console.log(self.games)
               $("#refreshBtn").removeClass('rotate');
               self.renderGames();
           }    
@@ -77,7 +76,6 @@ function(
    renderGames: function()
    {
       var self = this, gameItem;
-      console.log(this.games)
       $("#gamesList").html('');
       self.games.each(function(game, index, friends)
       {             
