@@ -40,8 +40,9 @@ function($,
             'click #backBtn': 'backBtnClick',
         },
 
-        backBtnClick: function()
-        {
+        backBtnClick: function(e)
+        {   
+            e.preventDefault();
             this.router.back();
         }
 

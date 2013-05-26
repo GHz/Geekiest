@@ -66,7 +66,7 @@ function($,
                 case "create game":
                     var toVar = '';
 
-                    if(!_.isUndefined(database.currentThing.j1))
+                    if(!_.isUndefined(database.currentThing) && !_.isUndefined(database.currentThing.j1))
                     { 
                       toVar = (localStorage.getItem('userId') == database.currentThing.j1) ? database.currentThing.j2 : database.currentThing.j1
                     }
