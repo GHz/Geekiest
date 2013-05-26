@@ -68,7 +68,7 @@ function(
         answerCLick: function(e)
         {
             e.preventDefault();
-            database.currentGame = this.model.get('id');
+            database.currentGame = this.model.get('opId');
             database.currentGameO = this.model;
 
             database.transitionData = {

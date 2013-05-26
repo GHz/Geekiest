@@ -173,6 +173,9 @@ input.answer { width: 100%; }
 /* line 83, ../sass/style/_player.sass */
 .sendChallenge .sendchall, .sendChallenge .sendchallAAA { background: #5fac63; padding: 18px 7px; margin-top: 15px; }
 
+/* line 89, ../sass/style/_player.sass */
+.sendchallAAA { background: #5fac63; }
+
 /* line 2, ../sass/style/_home.sass */
 .homeDashboard .infos { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=51); opacity: 0.51; background-color: white; -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12); filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=66); opacity: 0.66; color: #636363; font-size: 22px; padding: 10px; }
 

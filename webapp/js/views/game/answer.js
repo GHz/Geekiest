@@ -65,7 +65,7 @@ function($,
             e.preventDefault();
 
             var self = this;
-
+            console.log(database.currentGameO.attributes.id);
             $.ajax({
                   type: "POST",
                   url: 'http://serene-forest-6114.herokuapp.com/users/game',
