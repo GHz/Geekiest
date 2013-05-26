@@ -43,7 +43,7 @@ function($,
         },
 
         events : {
-            'click .sendchall' : 'sendChallenge'
+            'click .sendchallAAA' : 'sendChallenge'
         },
 
         render: function()
