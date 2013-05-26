@@ -24,7 +24,7 @@ function($,
             $(this.el).undelegate('#settingsBtn', 'click');
             $(this.el).undelegate('#refreshBtn', 'click');
             $(this.el).undelegate('#validateBtn', 'click');
-
+            $(this.el).undelegate('#backBtn', 'click');
     		this.$el.html(Mustache.to_html(HeaderTemplate, {
                 'settingsBtn': this.settingsBtn,
                 'refreshBtn' : this.refreshBtn,
@@ -34,9 +34,11 @@ function($,
             }));
         	
             
-        },
+        }
 
-        events: {
+        /*,
+
+        /*events: {
             'click #backBtn': 'backBtnClick',
         },
 
@@ -44,7 +46,7 @@ function($,
         {   
             e.preventDefault();
             this.router.back();
-        }
+        }*/
 
 	});
 });

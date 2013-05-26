@@ -35,7 +35,9 @@ function($,
 
         	this.router = opts.router;
 
-            eval('this.model = ' + localStorage.getItem("currentThing"));
+            //eval('this.model = ' + localStorage.getItem("currentThing"));
+
+            this.model = database.currentMedia;
 
     		this.render();
 
@@ -43,13 +45,24 @@ function($,
         },
 
         events : {
-            'click .sendchallAAA' : 'sendChallenge'
+            'click .sendchallAAA' : 'sendChallenge',
+            'click #backBtn': 'backBtnClick',
+            'click .avatar': 'fakeClick'
         },
+
+        fakeClick: function()
+        {
+            this.backBtnClick();
+        },
+
+        backBtnClick: function() {
+            this.router.navigate("randomchallenge", {trigger: true, replace: true});
+         },
 
         render: function()
         {
         	this.mediaPlayer = new YoutubePlayerView({
-        		model: _.extend( this.model,
+        		model: _.extend( this.model.toJSON(),
                 {
 					"picker": true,
 					"height": "230px",

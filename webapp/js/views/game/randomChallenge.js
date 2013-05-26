@@ -52,6 +52,11 @@ function(
 
      events: {
         'click #refreshBtn': 'fetchData',
+        'click #backBtn': 'backBtnClick',
+     },
+
+     backBtnClick: function() {
+        this.router.navigate("home", {trigger: true, replace: true});
      },
 
     fetchData: function()
