@@ -64,12 +64,23 @@ function($,
             switch(database.transitionData.action)
             {
                 case "create game":
+                    var toVar = '';
+
+                    if(!_.isUndefined(database.currentThing.j1))
+                    { 
+                      toVar = (localStorage.getItem('userId') == database.currentThing.j1) ? database.currentThing.j2 : database.currentThing.j1
+                    }
+                    else
+                    {
+                      toVar = database.transitionData.opId;
+                    }
+
                     $.ajax({
                       type: "POST",
                       url: 'http://serene-forest-6114.herokuapp.com/users/create_game',
                       data: {
                             from: localStorage.getItem('userId'),
-                            to: (localStorage.getItem('userId') == database.currentThing.j1) ? database.currentThing.j2 : database.currentThing.j1
+                            to: toVar
                       },
                       success: function(response){
                         database.currentGame = response;
