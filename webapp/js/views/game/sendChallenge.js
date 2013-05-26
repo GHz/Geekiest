@@ -38,6 +38,8 @@ function($,
             eval('this.model = ' + localStorage.getItem("currentThing"));
 
     		this.render();
+
+            
         },
 
         events : {
