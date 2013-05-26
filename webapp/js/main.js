@@ -37,7 +37,7 @@ require.config({
             'exports': '$.fn.slider'
         },
 
-        'libs/jquery.autotab.js':
+        'libs/jquery.autotab':
         {
             deps: ['jquery'],
             'exports': '$.fn.autotab_magic'

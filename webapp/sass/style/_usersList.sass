@@ -1,4 +1,4 @@
-#usersList
+#usersList, #gamesList
 	list-style: none
 
 	li 
@@ -14,11 +14,16 @@
 		&:hover
 			background-color: rgba(255, 255, 255, 0.84)
 
-		img
+		img.avatar
 			@include border-radius(5px)
 			width: 56px
 			height: 56px
 			margin: 10px 4px 10px 10px
+
+		.wait
+			float: right
+			width: 75px
+			padding: 10px
 
 		.text 
 			padding: 12px 0 0 6px

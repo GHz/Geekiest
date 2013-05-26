@@ -77,6 +77,44 @@ function($,
                       }
                     });
                 break;
+
+                case "answer game":
+                   $.ajax({
+                      type: "POST",
+                      url: 'http://serene-forest-6114.herokuapp.com/users/start_game',
+                      data: {
+                            id: database.transitionData.opId
+                      },
+                      success: function(response){
+                        eval('var ree = ' + response +';');
+                        
+                        database.currentThing = ree[0];
+                        database.currentThing.start = ree[0].start_video;
+                        database.currentThing.end = ree[0].end_video;
+                        database.currentThing.picker = false;
+                        
+                        self.router.navigate("answer", {trigger: true, replace: true});
+                      }
+                    });
+                break;
+
+                case "home":
+
+
+                    console.log('wtf' + database.currentGame);
+                  $.ajax({
+                        type: "POST",
+                        url: 'http://serene-forest-6114.herokuapp.com/users/switch_game',
+                        data: {
+                              game_id: database.currentGame
+                        },
+                        success: function(){
+                          console.log('dsdsdsd');
+                          self.router.navigate("home", {trigger: true, replace: true});
+                        }
+                      });
+
+                break;
             }
         }
 	});

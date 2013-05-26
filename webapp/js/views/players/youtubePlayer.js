@@ -38,18 +38,10 @@ function($,
 
         render: function()
         {
-            console.log(this.model)
-            console.log(_.extend(
-                this.model,
-                {
-                    picker: true,
-                    start: 10,
-                    end: 20
-                }))
+
         	var html = Mustache.to_html(YoutubePlayerTemplate, _.extend(
                 this.model,
                 {
-                    picker: true,
                     start: this.startPicker,
                     end: this.endPicker
                 })

@@ -39,7 +39,7 @@ function($,
 
     		this.render();
 
-            
+
         },
 
         events : {
@@ -49,12 +49,12 @@ function($,
         render: function()
         {
         	this.mediaPlayer = new YoutubePlayerView({
-        		model: this.model,
-                data :  {
+        		model: _.extend( this.model,
+                {
 					"picker": true,
 					"height": "230px",
-        		}
-        	});
+        		})
+        	});s²
 
         	var html = Mustache.to_html(SendChallengeTemplate, {
                 'userAvatar' : localStorage.getItem('userAvatar')
@@ -71,7 +71,7 @@ function($,
             e.preventDefault();
 
             var self = this;
-
+            
             $.ajax({
                   type: "POST",
                   url: 'http://serene-forest-6114.herokuapp.com/users/send_challenge',
@@ -84,7 +84,7 @@ function($,
 
                   },
                   success: function(response){
-                    console.log(response);
+                        self.router.navigate("home", {trigger: true, replace: true});
                   }
             });
         }

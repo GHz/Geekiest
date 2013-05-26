@@ -45,7 +45,8 @@ function(
 	 },
 
    events: {
-    'click .findFriend' : 'fiendFriencClick' 
+    'click .findFriend' : 'fiendFriencClick', 
+    'click #refreshBtn' : 'fetchData' 
    },
 
   fetchData: function()
@@ -57,7 +58,7 @@ function(
               alert("error!!"); 
           },
           success: function (e) {
-            console.log(e)
+            console.log(e);
               $("#refreshBtn").removeClass('rotate');
               self.renderGames();
           }    
@@ -67,7 +68,7 @@ function(
    render: function()
    {
       var html = Mustache.to_html(HomeTemplate, {
-        userPseudo: localStorage.getItem('userPseudo')
+        userName: localStorage.getItem('userName')
       });
 
       $('#main-content').html(html);
@@ -76,11 +77,14 @@ function(
    renderGames: function()
    {
       var self = this, gameItem;
+      console.log(this.games)
+      $("#gamesList").html('');
       self.games.each(function(game, index, friends)
       {             
               gameItem = new GameItemView({
                     model: game,
-                    collection: self.games
+                    collection: self.games,
+                    router: self.router
               });
 
               $("#gamesList").append(gameItem.render().el);

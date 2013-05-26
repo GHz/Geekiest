@@ -1,18 +1,37 @@
-<div><img src="{{Avatar}}" class="left" /> 
+<div><img src="{{Avatar}}" class="left avatar" /> 
 
-<a href="#" class="btnList right {{#isActive}}go{{/isActive}} actionInvitGo" >
-	{{#isActive}}GO&#32;&#32;&#32;!{{/isActive}}
-	{{^isActive}}INVIT{{/isActive}}
-</a>
+
+{{^isMaster}}
+	<a href="#" class="btnList right  actionAnswer" >OK&#32;&#32;&#32;!</a>
+{{/isMaster}}
+
+{{#isMaster}}
+	{{#isStatusTwo}}
+		<img src="img/indic_wait.PNG" class="wait" />
+	{{/isStatusTwo}}
+	{{^isStatusTwo}}
+		<a href="#" class="btnList right go actionInvitGo" >GO&#32;&#32;&#32;!</a>
+	{{/isStatusTwo}}
+{{/isMaster}}
+
 
 <div class="text">
-	<p class="name">{{Name}} </p>
+	<p class="name">{{Name}}</p>
 	<p class="desc">
-		{{#isActive}}
-			Ready to beat {{#isFemale}}her{{/isFemale}}{{^isFemale}}him{{/isFemale}} ?
-		{{/isActive}}
-		{{^isActive}}
-			Challenge {{#isFemale}}her{{/isFemale}}{{^isFemale}}him{{/isFemale}}, if you dare ! 
-		{{/isActive}}
+		{{^isMaster}}
+			has challenged you !
+		{{/isMaster}}
+		{{#isMaster}}
+			Turn {{counter}} - 
+			{{#isStatusTwo}}
+				{{#isFemale}}Her{{/isFemale}}
+				{{^isFemale}}His{{/isFemale}} 
+			{{/isStatusTwo}}
+			{{^isStatusTwo}}
+				Your
+			{{/isStatusTwo}}
+			turn
+		{{/isMaster}}
+		
 	</p>
 </div>
