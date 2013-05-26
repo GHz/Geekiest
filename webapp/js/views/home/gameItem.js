@@ -45,7 +45,8 @@ function(
         actionClick: function(e)
         {
           e.preventDefault();
-
+          
+          database.currentGame = this.model.get('id');
           database.transitionData = {
                 roundNumber : this.model.get('counter'),
                 special : '' ,
@@ -68,7 +69,8 @@ function(
         answerCLick: function(e)
         {
             e.preventDefault();
-            database.currentGame = this.model.get('opId');
+            //console.log(this.model)
+            database.currentGame = this.model.get('id');
             database.currentGameO = this.model;
 
             database.transitionData = {

@@ -69,7 +69,7 @@ function($,
                       url: 'http://serene-forest-6114.herokuapp.com/users/create_game',
                       data: {
                             from: localStorage.getItem('userId'),
-                            to: database.transitionData.opId
+                            to: (localStorage.getItem('userId') == currentThing.j1) ? currentThing.j2 : currentThing.j1
                       },
                       success: function(response){
                         database.currentGame = response;
