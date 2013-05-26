@@ -60,7 +60,7 @@ function(Backbone,
             'newcustomchallenge' : 'newCustomChallengePage', 
 
             //Random Challenge (4 typess)
-            'randomchallenge' : 'randomChallengePage',
+            'randomchallenge' : 'randomChallengePage'
         },
 
 		'splashScreenPage': function()

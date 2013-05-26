@@ -71,7 +71,7 @@ function(
                 {             
                         friendItem = new UserInvitationItemView({
                                 model: friend,
-                                router: this.router,
+                                router: self.router,
                                 collection: self.friends
                         });
 

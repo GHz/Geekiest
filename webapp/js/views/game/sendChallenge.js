@@ -35,9 +35,13 @@ function($,
 
         	this.router = opts.router;
 
-            this.model = localStorage.getItem("currentThing");
+            eval('this.model = ' + localStorage.getItem("currentThing"));
 
     		this.render();
+        },
+
+        events : {
+            'click .sendchall' : 'sendChallenge'
         },
 
         render: function()
@@ -58,6 +62,29 @@ function($,
 
         	$("#videoPlayer").append( this.mediaPlayer.render().el);
         	this.mediaPlayer.initPicker();
+        },
+
+        sendChallenge : function(e)
+        {
+            e.preventDefault();
+
+            var self = this;
+
+            $.ajax({
+                  type: "POST",
+                  url: 'http://serene-forest-6114.herokuapp.com/users/send_challenge',
+                  data: {
+                    thing_id: self.model['id'],
+                    start_video: self.mediaPlayer.startPicker,
+                    end_video: self.mediaPlayer.endPicker,
+                    message: $('.form').val(),
+                    game_id: database.currentGame
+
+                  },
+                  success: function(response){
+                    console.log(response);
+                  }
+            });
         }
 	});
 });

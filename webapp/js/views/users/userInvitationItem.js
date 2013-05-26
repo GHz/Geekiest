@@ -42,9 +42,25 @@ function(
         actionClick: function(e)
         {
                 e.preventDefault();
-
-                if(this.$('.go').length > 0)
+                  console.log(this)
+                if(this.$('.btnList ').hasClass('go'))
                 {
+                  database.transitionData = {
+                    roundNumber : '1',
+                    special : '' ,
+                    message : "Your turn",
+
+                    meAvatar : localStorage.getItem('userAvatar')+ "?width=" + 200 + "&height=" + 200,
+
+                    opPseudo : this.model.get('name'),
+                    opAvatar : this.model.getAvatar(200,200),
+                    opId : this.model.get('id'),
+
+                    action : "create game"
+
+                  }
+
+                  this.options.router.navigate("transition", {trigger: true, replace: true});
 
                   return;
                 }
