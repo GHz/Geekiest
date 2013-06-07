@@ -20,7 +20,7 @@ function(
         },
 
         events: {
-                'click .actionInvitGo' : 'actionClick'
+          'click .actionInvitGo' : 'actionClick'
         },
 
         render: function() {
@@ -42,26 +42,50 @@ function(
         actionClick: function(e)
         {
                 e.preventDefault();
+                if(this.$('.btnList ').hasClass('go'))
+                {
+                  database.transitionData = {
+                    roundNumber : '1',
+                    special : '' ,
+                    message : "Your turn",
 
-                console.log(FB)
+                    meAvatar : localStorage.getItem('userAvatar')+ "?width=" + 200 + "&height=" + 200,
 
-                var self = this;
-                FB.ui({method: 'apprequests',
-                    message: 'My Great Request',
-                    to: this.model.get('id')
-                  }, function(){
-                        $.ajax({
-                          type: "POST",
-                          url: 'http://serene-forest-6114.herokuapp.com/users/invit',
-                          data : {
-                                from: localStorage.getItem('userId'),
-                                to: self.model.get('id')
-                          },
-                          success: function(response){
-                               alert('it works' + response );
-                          }
-                        });                        
-                  });
+                    opPseudo : this.model.get('name'),
+                    opAvatar : this.model.getAvatar(200,200),
+                    opId : this.model.get('id'),
+
+                    action : "create game"
+
+                  }
+
+                  this.options.router.navigate("transition", {trigger: true, replace: true});
+
+                  return;
+                }
+                else
+                {
+                  var self = this;
+                  FB.ui({method: 'apprequests',
+                      message: 'My Great Request',
+                      to: this.model.get('id')
+                    }, function(){
+                          $.ajax({
+                            type: "POST",
+                            url: 'http://serene-forest-6114.herokuapp.com/users/invit',
+                            data : {
+                                  from: localStorage.getItem('userId'),
+                                  to: self.model.get('id')
+                            },
+                            success: function(response){
+                                 self.$el.fadeOut();
+                            }
+                          });                        
+                    });
+
+                }
+
+                
         }
         
 	});

@@ -1,0 +1,65 @@
+@import "compass/utilities/general/clearfix"
+
+.randomChallenge
+	.challenges
+		+clearfix()
+	.challenge
+		position: relative
+		float: left
+		width: 180px
+		height: 180px
+		margin: 8
+		0px
+
+		&.tvshow .cover
+			background-color: #88b7d1
+
+		&.movie .cover
+			background-color: #977f9f 
+
+		&.videogame .cover
+			background-color: #cd6088
+
+		&.comic .cover
+			background-color: #feba35
+
+
+
+		.cover
+			height: 142px
+			width: 142px
+			background-position: center
+			background-size: 100% auto
+			background-color: red
+			position: absolute
+			left: 30px
+			z-index: 500
+
+		.icon
+			height: 47px
+
+
+		.backRb
+			z-index: 499
+			position: absolute
+			top: 108px
+			width: 182px
+			left: 11px
+
+
+		.frontRb
+			color: white
+			text-align: center
+			font-weight: bold
+			z-index: 501
+			position: absolute
+			padding: 7px 15px
+			top: 122px
+			width: 160px
+			left: 19px
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			display: block
+
+

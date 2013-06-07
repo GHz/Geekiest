@@ -1,4 +1,5 @@
 
+
   
   <div id="player-wrapper">
     <div class="playpausebtn"></div>
@@ -8,51 +9,7 @@
 
   {{#picker}}
   <div class="videoPickerWrapper">
-    <input id="videoPicker" type="slider" class="hide" name="area" value="0;720" />
+    <input id="videoPicker" type="slider" class="hide" name="area" value="{{start}};{{end}}" />
   </div>
   {{/picker}}
 </article>
-
-
-<script>
-  // Loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // Create the Youtube Iframe
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-    height: '{{height}}',
-    videoId: '{{video-id}}',
-    playerVars: { 
-      'autoplay': 0, 
-      'autohide': 1,
-      'showinfo': 0 
-    },
-
-    events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-  }
-
-
-  function onPlayerReady(event) {
-    event.target.setPlaybackQuality('small');
-    //event.target.playVideo();
-  }
-
-  var done = false;
-  function onPlayerStateChange(event) {
-    /*if (event.data == YT.PlayerState.PLAYING && !done) {
-      player.pauseVideo();
-      done = true;
-    }*/
-  }
-
-</script>

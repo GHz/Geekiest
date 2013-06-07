@@ -38,7 +38,7 @@ define([
                     height = 100;
                 }
 
-                return (this.get('avatar') + "?width=" + width + "&height" + height)
+                return (this.get('avatar') + "?width=" + width + "&height=" + height)
             },
         });
 });

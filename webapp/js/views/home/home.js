@@ -2,6 +2,8 @@ define([
 		'backbone',
     'mustache',
     'text!templates/home/home.html',
+    'views/home/gameItem',
+    'collections/games',
 		'packages/CustomView',
 
 		],
@@ -9,6 +11,8 @@ function(
 		Backbone,
     Mustache,
     HomeTemplate,
+    GameItemView,
+    Games,
 		CustomView
 ){
 	return  CustomView.extend({
@@ -16,7 +20,7 @@ function(
     refreshBtn: true,
     backBtn: false,
 
-		el: 'body',
+		el: '.app',
 
     initialize: function(opts)
     {
@@ -34,19 +38,55 @@ function(
 
       this.render();
 
+      this.games = new Games();
+
+      this.fetchData();
+
 	 },
 
    events: {
-    'click .findFriend' : 'fiendFriencClick' 
+    'click .findFriend' : 'fiendFriencClick', 
+    'click #refreshBtn' : 'fetchData' 
    },
+
+  fetchData: function()
+  {
+      $("#refreshBtn").addClass('rotate');
+      var self = this;
+      this.games.fetch({
+          error: function () {
+          },
+          success: function (e) {
+            console.log(self.games)
+              $("#refreshBtn").removeClass('rotate');
+              self.renderGames();
+          }    
+      });
+  },
 
    render: function()
    {
       var html = Mustache.to_html(HomeTemplate, {
-        userPseudo: localStorage.getItem('userPseudo')
+        userName: localStorage.getItem('userName')
       });
 
       $('#main-content').html(html);
+   },
+
+   renderGames: function()
+   {
+      var self = this, gameItem;
+      $("#gamesList").html('');
+      self.games.each(function(game, index, friends)
+      {             
+              gameItem = new GameItemView({
+                    model: game,
+                    collection: self.games,
+                    router: self.router
+              });
+
+              $("#gamesList").append(gameItem.render().el);
+      });
    },
 
    fiendFriencClick : function(e)
