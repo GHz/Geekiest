@@ -3,8 +3,8 @@ define([
 	'backbone',
 	'mustache',
 	'packages/CustomView',
-	'views/players/youtubePlayer',
-	'text!templates/game/sendChallenge.html',
+	'views/challenge/mechanism/youtube',
+	'text!templates/challenge/send.html',
 	'libs/jquery.slider.min',
 
 	],
@@ -56,7 +56,7 @@ function($,
         },
 
         backBtnClick: function() {
-            this.router.navigate("randomchallenge", {trigger: true, replace: true});
+            this.router.navigate("challenge/index", {trigger: true, replace: true});
          },
 
         render: function()
@@ -97,7 +97,7 @@ function($,
 
                   },
                   success: function(response){
-                        self.router.navigate("home", {trigger: true, replace: true});
+                        self.router.navigate("dashboard", {trigger: true, replace: true});
                   }
             });
         }

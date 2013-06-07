@@ -2,17 +2,17 @@ define([
 		'backbone',
 		"mustache",
 		'packages/CustomView',
-		'text!templates/home/invit.html',
-                'collections/friends',
-                'views/users/userInvitationItem'
+		'text!templates/players/invit.html',
+        'collections/friends',
+        'views/players/userInvitationItem'
 		],
 function(
 		Backbone,
 		Mustache,
 		CustomView,
 		InvitTemplate,
-                Friends,
-                UserInvitationItemView
+        Friends,
+        UserInvitationItemView
 ){
 	return  CustomView.extend({
 
@@ -86,7 +86,7 @@ function(
         validateClick: function(e)
         {
             this.undelegateEvents();
-            this.router.navigate("home", {trigger: true, replace: true});
+            this.router.navigate("dashboard", {trigger: true, replace: true});
         }
 	});
 });

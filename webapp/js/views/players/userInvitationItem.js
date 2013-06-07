@@ -1,7 +1,7 @@
 define([
 		'backbone',
 		"mustache",
-		'text!templates/users/userInvitationItem.html',
+		'text!templates/players/userInvitationItem.html',
 		'models/User',
 
 		],

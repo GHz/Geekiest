@@ -9,8 +9,5 @@ define([
     ) {
     return Backbone.Model.extend(
         {
-   			url: function () {
-   				return 
-   			}        
         });
 });

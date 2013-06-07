@@ -3,8 +3,8 @@ define([
   'backbone',
   'mustache',
   'packages/CustomView',
-  'views/players/youtubePlayer',
-  'text!templates/game/answer.html',
+  'views/challenge/mechanism/youtube',
+  'text!templates/challenge/answer.html',
   'libs/jquery.autotab',
   ],
 function($,
@@ -65,7 +65,6 @@ function($,
             e.preventDefault();
 
             var self = this;
-            console.log(database.currentGameO.attributes.id);
             $.ajax({
                   type: "POST",
                   url: 'http://serene-forest-6114.herokuapp.com/users/game',
@@ -83,17 +82,10 @@ function($,
                             roundNumber : self.model.counter,
                             special : 'red' ,
                             message : "You Loose  !",
-
                             meAvatar : localStorage.getItem('userAvatar') + "?width=" + 200 + "&height=" + 200,
-
                             opPseudo : oP,
                             opAvatar : oA,
-
-                           // opId : self.model.get('id'),
-
                             action : "home"
-
-
                         }
                     }
                     else
@@ -102,19 +94,11 @@ function($,
                             roundNumber : self.model.counter,
                             special : 'green' ,
                             message : "You Win  !",
-
                             meAvatar : localStorage.getItem('userAvatar') + "?width=" + 200 + "&height=" + 200,
-
                             opPseudo : oP,
                             opAvatar : oA,
-
-                           // opId : self.model.get('id'),
-
                             action : "home"
-
-
                         }
-
                     }
 
                     self.router.navigate("transition", {trigger: true, replace: true});

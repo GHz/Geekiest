@@ -2,7 +2,7 @@ define([
         'backbone',
         'mustache',
         'packages/CustomView',
-        'text!templates/game/newCustomChallenge.html'
+        'text!templates/challenge/new.html'
 
         ],
 function(

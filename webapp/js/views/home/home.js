@@ -1,99 +1,71 @@
 define([
 		'backbone',
-    'mustache',
-    'text!templates/home/home.html',
-    'views/home/gameItem',
-    'collections/games',
+		"mustache",
 		'packages/CustomView',
-
+		'text!templates/home/home.html'
 		],
 function(
 		Backbone,
-    Mustache,
-    HomeTemplate,
-    GameItemView,
-    Games,
-		CustomView
+		Mustache,
+		CustomView,
+        HomeTemplate
 ){
-	return  CustomView.extend({
-
-    refreshBtn: true,
-    backBtn: false,
-
+	return  Backbone.View.extend({
 		el: '.app',
 
-    initialize: function(opts)
-    {
-    	this.constructor.__super__.initialize.apply(this, opts);
-    	if(this.events)
-    	{
-    		this.events = _.defaults(this.events, CustomView.prototype.events);
-    	}
-    	else
-    	{
-    		this.events = CustomView.prototype.events;
-    	}
+        initialize: function(opts)
+        {
+        	this.router = opts.router;
 
-    	this.router = opts.router;
+        	if(localStorage.getItem("userToken"))
+        	{
+        		this.router.navigate("dashboard", {trigger: true, replace: true});
+        		return;	 
+        	}
 
-      this.render();
+        	var html = Mustache.to_html(HomeTemplate);
+        	this.$el.html(html);
+        },
 
-      this.games = new Games();
+        events: {
+        	'click .facebook': 'facebookClick',
+        	'click .howto': 'howtoClick',
+        },
 
-      this.fetchData();
+        facebookClick: function(e) {
+        	e.preventDefault();
 
-	 },
+        	$('.facebook')
+        		.addClass('refresh')
+        		.html('<img src="img/btn_refresh.png" class="rotate btn_wait" />');
 
-   events: {
-    'click .findFriend' : 'fiendFriencClick', 
-    'click #refreshBtn' : 'fetchData' 
-   },
+        	var self = this;
+        	var datas;
+		    FB.login(function(response){
+		        if(response.authResponse){
 
-  fetchData: function()
-  {
-      $("#refreshBtn").addClass('rotate');
-      var self = this;
-      this.games.fetch({
-          error: function () {
-          },
-          success: function (e) {
-            console.log(self.games)
-              $("#refreshBtn").removeClass('rotate');
-              self.renderGames();
-          }    
-      });
-  },
+	        	$.ajax({
+					  type: "POST",
+					  url: 'http://serene-forest-6114.herokuapp.com/users/login',
+					  data: response,
+					  success: function(response){
+					  	var datas = JSON.parse(response);
+					  	localStorage.setItem("userToken", datas.token);
+					  	localStorage.setItem("userName", datas["name"]);
+					  	localStorage.setItem('userAvatar', datas.avatar);
+					  	localStorage.setItem('userId', datas.id);
 
-   render: function()
-   {
-      var html = Mustache.to_html(HomeTemplate, {
-        userName: localStorage.getItem('userName')
-      });
+					  	self.router.navigate("players/invit", {trigger: true, replace: true});
+					  }
+					});
 
-      $('#main-content').html(html);
-   },
+		        }
+		      },{scope : 'email,read_friendlists,user_status'});
+        },
 
-   renderGames: function()
-   {
-      var self = this, gameItem;
-      $("#gamesList").html('');
-      self.games.each(function(game, index, friends)
-      {             
-              gameItem = new GameItemView({
-                    model: game,
-                    collection: self.games,
-                    router: self.router
-              });
-
-              $("#gamesList").append(gameItem.render().el);
-      });
-   },
-
-   fiendFriencClick : function(e)
-   {
-      e.preventDefault();
-      this.router.navigate("invit", {trigger: true, replace: true});
-   }
-
+        howtoClick: function(e) {	
+        	e.preventDefault();
+        	this.router.navigate("help", {trigger: true, replace: true});
+        },
 	});
 });

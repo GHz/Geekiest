@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'backbone',
 	'mustache',
-	'text!templates/game/transition.html',
+	'text!templates/home/transition.html',
 
 	],
 function($,
@@ -84,7 +84,7 @@ function($,
                       },
                       success: function(response){
                         database.currentGame = response;
-                        self.router.navigate("randomchallenge", {trigger: true, replace: true});
+                        self.router.navigate("challenge/index", {trigger: true, replace: true});
                       }
                     });
                 break;
@@ -104,15 +104,12 @@ function($,
                         database.currentThing.end = ree[0].end_video;
                         database.currentThing.picker = false;
                         
-                        self.router.navigate("answer", {trigger: true, replace: true});
+                        self.router.navigate("challenge/answer", {trigger: true, replace: true});
                       }
                     });
                 break;
 
                 case "home":
-
-
-                    console.log('wtf' + database.currentGame);
                   $.ajax({
                         type: "POST",
                         url: 'http://serene-forest-6114.herokuapp.com/users/switch_game',
@@ -120,7 +117,7 @@ function($,
                               game_id: database.currentGame
                         },
                         success: function(){
-                          self.router.navigate("home", {trigger: true, replace: true});
+                          self.router.navigate("dashboard", {trigger: true, replace: true});
                         }
                       });
 

@@ -2,7 +2,7 @@ define([
 		'backbone',
 		"mustache",
 		'packages/CustomView',
-		'text!templates/home/howto.html',
+		'text!templates/home/help.html',
 
 		],
 function(

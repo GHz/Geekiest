@@ -1,7 +1,7 @@
 define([
 		'backbone',
 		"mustache",
-		'text!templates/home/gameItem.html',
+		'text!templates/dashboard/gameItem.html',
 		'models/User',
 
 		],
@@ -69,7 +69,7 @@ function(
         answerCLick: function(e)
         {
             e.preventDefault();
-            //console.log(this.model)
+
             database.currentGame = this.model.get('id');
             database.currentGameO = this.model;
 

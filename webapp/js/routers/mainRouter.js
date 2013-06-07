@@ -3,109 +3,92 @@ define([
 	'underscore',
 	'packages/options',
 	'packages/AppRouter',
-	'views/home/splashscreen',
+
 	'views/home/home',
-	'views/home/howto',
-	'views/home/invit',
-	'views/game/sendChallenge',
-	'views/game/transition',
-	'views/game/newCustomChallenge',
-	'views/game/randomChallenge',
-	'views/game/answer'
+	'views/home/help',
+    'views/home/transition',
+
+    'views/dashboard/index',
+
+    'views/challenge/index',
+    'views/challenge/new',
+    'views/challenge/new/selectPlaylist',
+    'views/challenge/new/selectThing',
+    'views/challenge/send',
+    'views/challenge/answer',
+
+    'views/players/invit',
 ],
 function(Backbone,
          _,
          appOptions,
          AppRouter,
-         SlpashScreenPageView,
+
          HomePageView,
-         HowtoPageView,
-         InvitPageView,
-         SendChallengePageView,
+         HelpPageView,
          TransitionPageView,
-         NewCustomChallengePageView,
-         RandomChallengePageView,
-         AnswerPageView
+
+         DashboardPageView,
+
+         IndexChallengePageView,
+         NewChallengePageView,
+         SelectPlaylistChallengePageView,
+         SelectThingChallengePageView,
+         SendChallengePageView,
+         AnswerPageView,
+
+         InvitPlayersPageView
          )
 {
-	return AppRouter.extend(
-	{
-		initialize: function()
-		{
-			Backbone.history.start({
-				root: "/Geekiest/webapp/"
-			});
+return AppRouter.extend(
+{
+    initialize: function()
+    {
+        Backbone.history.start({
+            root: "/Geekiest/webapp/",
+            pushState: false
+        });
+    },
 
-		},
+    routes:
+    {
+        //Home
+        '' : 'homePage',
+        'help' : 'helpPage',
+        'transition' : 'transitionPage',
 
-		routes:
-		{
-            //SplashScreen
-           '': 'splashScreenPage',
+        //Dashboard
+        'dashboard' : 'dashboardPage',
 
-            //Game Dashboard
-            'home': 'homePage',
+        //Challenge
+        'challenge/index' : 'indexChallengePage',
+        'challenge/new' : 'newChallengePage',
+        'challenge/new/:type' : 'selectPlaylistChallengePage',
+        'challenge/new/playlist/:id' : 'selectThingChallengePage',
+        'challenge/send' : 'sendChallengePage',
+        'challenge/answer' : 'answerPage',
 
-            //How To
-            'howto': 'howtoPage',
+        //Players
+        'players/invit': 'invitPlayersPage'
+    },
 
-            //Invit
-            'invit': 'invitPage',
+    //Home
+    'homePage': function() { this.HomePageView = new HomePageView({router: this}); },
+    'helpPage': function() { this.HelpPageView = new HelpPageView({router: this}); },
+    'transitionPage': function() { this.TransitionPageView = new TransitionPageView({router: this}); },
 
-            //Send Challenge to your friend
-            'sendchallenge': 'sendChallengePage',
+    //Dashboard
+    'dashboardPage': function() { this.DashboardPageView = new DashboardPageView({router: this}); },
 
-            //Transition beetween game views
-            'transition' : 'transitionPage',
+    //Challenge
+    'indexChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
+    'newChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
+    'selectPlaylistChallengePage': function() { this.SelectPlaylistChallengePageView = new SelectPlaylistChallengePageView({router: this}); },
+    'selectThingChallengePage': function() { this.SelectThingChallengePageView = new SelectThingChallengePageView({router: this}); },
+    'sendChallengePage': function() { this.SendChallengePageView = new SendChallengePageView({router: this}); },
+    'answerPage': function() { this.AnswerPageView = new AnswerPageView({router: this}); },
 
-            //Custom Challenge
-            'newcustomchallenge' : 'newCustomChallengePage', 
-
-            //Random Challenge (4 typess)
-            'randomchallenge' : 'randomChallengePage',
-
-            //Answer
-            'answer' : 'answerPage'
-        },
-
-		'splashScreenPage': function()
-		{
-            this.splashScreenView = new SlpashScreenPageView({router: this});
-		},
-
-		'homePage': function()
-		{
-            this.homePageView = new HomePageView({router: this});
-		},
-
-		'howtoPage': function()
-		{
-            this.howtoPageView = new HowtoPageView({router: this});
-		},		
-
-		'invitPage': function()
-		{
-            this.invitPageView = new InvitPageView({router: this});
-		},
-
-		'sendChallengePage': function()
-		{
-            this.sendChallengePageView = new SendChallengePageView({router: this});
-		},
-
-		'transitionPage': function()
-		{
-            this.transitionPagePageView = new TransitionPageView({router: this});
-		},
-
-		'randomChallengePage': function()
-		{
-            this.RandomChallengePageView = new RandomChallengePageView({router: this});
-		},
-
-		'answerPage': function()
-		{
-            this.answerPageView = new AnswerPageView({router: this});
-		}
-	});
+    //Players
+    'invitPlayersPage': function() { this.InvitPlayersPageView = new InvitPlayersPageView({router: this}); }
+});
 });

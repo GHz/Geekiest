@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'backbone',
 	'mustache',
-	'text!templates/player/youtube.html',
+	'text!templates/challenge/mechanism/youtube.html',
 	'libs/jquery.slider.min',
 
 	],
@@ -166,7 +166,6 @@ function($,
 
             this.currentPos = this.newCurrentPos;
             
-            console.log("wtf before- " + value);
 		    if(this.isInit < 0)
 		    {
 		    	//$('.playpausebtn').addClass('play');

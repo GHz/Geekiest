@@ -3,8 +3,8 @@ define([
         'mustache',
         'packages/CustomView',
         'collections/things',
-        'text!templates/game/randomChallenge.html',
-        'views/game/thingItem'
+        'text!templates/challenge/index.html',
+        'views/challenge/thingItem'
 
         ],
 function(
@@ -56,7 +56,7 @@ function(
      },
 
      backBtnClick: function() {
-        this.router.navigate("home", {trigger: true, replace: true});
+        this.router.navigate("dashboard", {trigger: true, replace: true});
      },
 
     fetchData: function()
