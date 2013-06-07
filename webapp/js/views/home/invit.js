@@ -54,7 +54,6 @@ function(
             var self = this;
             this.friends.fetch({
                 error: function () {
-                    alert("error!!"); 
                 },
                 success: function () {
                     $("#refreshBtn").removeClass('rotate');
@@ -66,10 +65,12 @@ function(
         render: function()
         {
                 var self = this, friendItem;
+                $("#usersList").html('');
                 self.friends.each(function(friend, index, friends)
                 {             
                         friendItem = new UserInvitationItemView({
                                 model: friend,
+                                router: self.router,
                                 collection: self.friends
                         });
 

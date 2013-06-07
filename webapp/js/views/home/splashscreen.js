@@ -11,7 +11,7 @@ function(
 		SplashScreenTemplate
 ){
 	return  Backbone.View.extend({
-		el: 'body',
+		el: '.app',
 
         initialize: function(opts)
         {

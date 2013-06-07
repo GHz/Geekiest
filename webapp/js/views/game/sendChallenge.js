@@ -16,7 +16,7 @@ function($,
 	SendChallengeTemplate
 	){
 	return CustomView.extend({
-		el: 'body',
+		el: '.app',
         
         backBtn: true,
         settingsBtn: true,
@@ -35,18 +35,38 @@ function($,
 
         	this.router = opts.router;
 
+            //eval('this.model = ' + localStorage.getItem("currentThing"));
+
+            this.model = database.currentMedia;
+
     		this.render();
+
+
         },
+
+        events : {
+            'click .sendchallAAA' : 'sendChallenge',
+            'click #backBtn': 'backBtnClick',
+            'click .avatar': 'fakeClick'
+        },
+
+        fakeClick: function()
+        {
+            this.backBtnClick();
+        },
+
+        backBtnClick: function() {
+            this.router.navigate("randomchallenge", {trigger: true, replace: true});
+         },
 
         render: function()
         {
         	this.mediaPlayer = new YoutubePlayerView({
-        		model: {
+        		model: _.extend( this.model.toJSON(),
+                {
 					"picker": true,
 					"height": "230px",
-					"video-id": "V6nbFZtxAL4",
-                    'duration': '340'
-        		}
+        		})
         	});
 
         	var html = Mustache.to_html(SendChallengeTemplate, {
@@ -56,7 +76,30 @@ function($,
         	$('#main-content').html(html);
 
         	$("#videoPlayer").append( this.mediaPlayer.render().el);
-        	this.mediaPlayer.initPicker();
+        	this.mediaPlayer.initPlayer();
+        },
+
+        sendChallenge : function(e)
+        {
+            e.preventDefault();
+
+            var self = this;
+
+            $.ajax({
+                  type: "POST",
+                  url: 'http://serene-forest-6114.herokuapp.com/users/send_challenge',
+                  data: {
+                    thing_id: self.model['id'],
+                    start_video: self.mediaPlayer.startPicker,
+                    end_video: self.mediaPlayer.endPicker,
+                    message: $('.form').val(),
+                    game_id: database.currentGame
+
+                  },
+                  success: function(response){
+                        self.router.navigate("home", {trigger: true, replace: true});
+                  }
+            });
         }
 	});
 });
