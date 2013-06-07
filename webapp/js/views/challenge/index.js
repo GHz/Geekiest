@@ -53,6 +53,7 @@ function(
      events: {
         'click #refreshBtn': 'fetchData',
         'click #backBtn': 'backBtnClick',
+         'click .newChallenge': 'newChallenge'
      },
 
      backBtnClick: function() {
@@ -89,7 +90,12 @@ function(
               $(".challenges").append(thingItem.render().el);
       });
     },
- 
+
+    newChallenge : function(e)
+    {
+        e.preventDefault();
+        this.options.router.navigate("challenge/new", {trigger: true, replace: true});
+    }
 
     });
 });

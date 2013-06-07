@@ -21,6 +21,7 @@ function($,
 
       	initialize: function(opts)
         {
+            $(this.el).undelegate('*', 'click');
             $(this.el).undelegate('#settingsBtn', 'click');
             $(this.el).undelegate('#refreshBtn', 'click');
             $(this.el).undelegate('#validateBtn', 'click');

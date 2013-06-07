@@ -82,7 +82,7 @@ return AppRouter.extend(
 
     //Challenge
     'indexChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
-    'newChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
+    'newChallengePage': function() { this.NewChallengePageView = new NewChallengePageView({router: this}); },
     'selectPlaylistChallengePage': function() { this.SelectPlaylistChallengePageView = new SelectPlaylistChallengePageView({router: this}); },
     'selectThingChallengePage': function() { this.SelectThingChallengePageView = new SelectThingChallengePageView({router: this}); },
     'sendChallengePage': function() { this.SendChallengePageView = new SendChallengePageView({router: this}); },
