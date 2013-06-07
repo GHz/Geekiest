@@ -95,7 +95,7 @@ function($,
                         });
 
                         var pCt = (self.startPicker / self.model.youtube_length * 100);
-                        $('.currentpos').css('left', pCt+1+"%");                       
+                        $('.currentpos').css('left', pCt+"%");                       
                     }
                 }
             });
