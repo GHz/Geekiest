@@ -76,7 +76,7 @@ function($,
         	$('#main-content').html(html);
 
         	$("#videoPlayer").append( this.mediaPlayer.render().el);
-        	this.mediaPlayer.initPicker();
+        	this.mediaPlayer.initPlayer();
         },
 
         sendChallenge : function(e)

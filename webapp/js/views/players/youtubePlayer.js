@@ -9,7 +9,7 @@ define([
 function($,
 	Backbone,
 	Mustache,
-	YoutubePlayerTemplate
+	YoutubeplayerTemplate
 	){
 	return Backbone.View.extend({
 		tagName: 'div',
@@ -21,13 +21,15 @@ function($,
 		endPicker: 0,
 		newCurrentPos: 0,
 		isChanging: false,
-		isInit: false,
+		isInit: -2,
+        player: null,
         
         initialize : function()
         {
             //eval(" this.model = " + this.model);
 
             this.startPicker = this.model.start;
+            this.newCurrentPos = this.model.start;
             this.endPicker = this.model.end;
         },
 
@@ -38,8 +40,14 @@ function($,
 
         render: function()
         {
+            var test = _.extend(
+                this.model,
+                {
+                    start: this.startPicker,
+                    end: this.endPicker
+                });
 
-        	var html = Mustache.to_html(YoutubePlayerTemplate, _.extend(
+        	var html = Mustache.to_html(YoutubeplayerTemplate, _.extend(
                 this.model,
                 {
                     start: this.startPicker,
@@ -52,77 +60,99 @@ function($,
         	return this;
         },
 
-        initPicker: function()
+        initPlayer: function()
         {
-        	var self = this;
-		 	$("#videoPicker").slider({
-				from: 0,
-				to: this.model.youtube_length,
-				step: 1,
-				dimension: '',
-				limits: false,
-				calculate: function( value ){
-					var hours = Math.floor( value / 60 );
-					var mins = ( value - hours*60 );
-					return (hours < 10 ? "0"+hours : hours) + "     :     " + ( mins == 0 ? "00" : mins );
-				},
-				onstatechange: function( value ){
-					if(!_.isUndefined(player))
-					{
-						self.updateCursorPos(value);
-					}
-				}
-			});
+            var self = this;
 
-            var pCt = self.model.start / self.model.youtube_length * 100;
-            $('.currentpos').css('left', pCt+"%");
+            this.player = new YT.Player('player', {
+                height: '230px',
+                videoId: this.model.youtube_id,
+                playerVars: { 
+                  'autoplay': 0, 
+                  'autohide': 1,
+                  'showinfo': 0 ,
+                  'showsearch ': 0,
+                  'iv_load_policy' : 3,
+                  'start': this.model.start
+                },
+
+                events: {
+                    'onReady': function(){
+                        $("#videoPicker").slider({
+                            from: 0,
+                            to: parseInt(self.model.youtube_length),
+                            step: 1,
+                            dimension: '',
+                            limits: false,
+                            calculate: function( value ){
+                                var hours = Math.floor( value / 60 );
+                                var mins = ( value - hours*60 );
+                                return (hours < 10 ? "0"+hours : hours) + "     :     " + ( mins == 0 ? "00" : mins );
+                            },
+                            onstatechange: function( value ){
+                                self.updateCursorPos(value);
+                            }
+                        });
+
+                        var pCt = (self.startPicker / self.model.youtube_length * 100);
+                        $('.currentpos').css('left', pCt+1+"%");                       
+                    }
+                }
+            });
         },
 
         playPauseBtnClick: function()
         {
         	if(this.isPlaying)
         	{
-        		player.pauseVideo();
+        		this.player.pauseVideo();
         		$('.playpausebtn').removeClass('play');
         		this.isPlaying = false;
         		clearInterval(this.intervalTimer);
         	}
         	else
         	{
-        		player.playVideo();
+        		this.player.playVideo();
         		$('.playpausebtn').addClass('play');
         		this.isPlaying = true;
-
-    			var self = this;
-        		this.intervalTimer = setInterval(function(){
-
-
-    				var currentTime = player.getCurrentTime();
-
-    				if(currentTime > self.endPicker || currentTime < self.startPicker)
-    				{
-    					player.seekTo(self.startPicker);
-    				}
-
-					if(!this.isChanging)
-					{
-    					var pCt = currentTime / self.model.youtube_length * 100;
-				    	$('.currentpos').css('left', pCt+"%");
-					}
-
-				},100);
+                this.setIntervalTimer();
         	}
+        },
+
+        setIntervalTimer: function()
+        {
+            var self = this;
+            this.intervalTimer = setInterval(function(){
+
+
+                var currentTime = self.player.getCurrentTime();
+
+                if(currentTime > self.endPicker || currentTime < self.startPicker)
+                {
+                    self.player.seekTo(self.startPicker);
+                }
+
+
+                var pCt = (currentTime / self.model.youtube_length * 100);
+                $('.currentpos').css('left', pCt+"%");
+
+
+            },100);
         },
 
         updateCursorPos: function(value)
         {
-
         	var dataSplit = value.split(";");
     		this.startPicker = dataSplit[0];
     		this.endPicker = dataSplit[1];
 
-    		var currentPos = player.getCurrentTime();
+    		var currentPos = this.player.getCurrentTime();
     		
+            if(currentPos == this.newCurrentPos)
+            {
+                return;
+            }
+
             this.newCurrentPos = currentPos;
 
     		if(currentPos<this.startPicker)
@@ -134,17 +164,23 @@ function($,
     			this.newCurrentPos = this.endPicker;
     		}
 
-			var pCt = this.newCurrentPos / this.model.youtube_length * 100;
-		    $('.currentpos').css('left', pCt+"%");
-
-		    if(!this.isInit)
+            this.currentPos = this.newCurrentPos;
+            
+            console.log("wtf before- " + value);
+		    if(this.isInit < 0)
 		    {
-		    	$('.playpausebtn').addClass('play');
-		    	this.isPlaying = true;
-		    	this.isInit = true;
-		    }
+		    	//$('.playpausebtn').addClass('play');
+		    	//this.isPlaying = true;
+                //this.setIntervalTimer();
 
-    		player.seekTo(this.newCurrentPos);
+                this.isInit++;
+                return;
+		    }
+            else
+            {
+                this.player.seekTo(this.newCurrentPos);
+                this.setIntervalTimer();
+            }
         },
 
 	});

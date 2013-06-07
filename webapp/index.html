@@ -15,10 +15,11 @@
 	</head>
 	<body>
 		<div class="app"></div>
+		<script src="https://www.youtube.com/iframe_api"></script>
 		<script data-main="js/main" src="js/require-jquery.js"></script>
 		<div id="fb-root"></div>
 		<script>
-		
+	      var player = null;
 		  window.fbAsyncInit = function() {
 		    FB.init({
 		    appId      : '340107129425326', // App ID
