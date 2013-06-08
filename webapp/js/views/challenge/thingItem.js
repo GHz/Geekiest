@@ -43,7 +43,7 @@ function(
 
                 //localStorage.setItem("currentThing", JSON.stringify(this.model.toJSON()));
                 database.currentMedia = this.model;
-                this.options.router.navigate("challenge/send", {trigger: true, replace: true});
+                this.options.router.navigate("challenge/send", {trigger: true});
         }  
 	});
 });

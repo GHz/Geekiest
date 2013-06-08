@@ -39,15 +39,15 @@ function(
 
      render: function()
      {
-        var html = Mustache.to_html(NewCustomChallengeTemplate, {});
-        $('#main-content').html(html);
+         var html = Mustache.to_html(NewCustomChallengeTemplate, {});
+         $('#main-content').html(html);
      },
 
     selectType : function(e)
     {
         e.preventDefault();
         var type = $(e.currentTarget).data('type');
-        this.router.navigate("challenge/new/"+type, {trigger: true, replace: true});
+        this.router.navigate("challenge/new/"+type, {trigger: true});
     }
 
     });

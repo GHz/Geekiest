@@ -101,7 +101,7 @@ function($,
                         }
                     }
 
-                    self.router.navigate("transition", {trigger: true, replace: true});
+                    self.router.navigate("transition", {replace: true});
                    
                   }
             });

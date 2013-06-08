@@ -40,7 +40,7 @@ function(Backbone,
          InvitPlayersPageView
          )
 {
-return AppRouter.extend(
+return Backbone.Router.extend(
 {
     initialize: function()
     {
@@ -83,7 +83,7 @@ return AppRouter.extend(
     //Challenge
     'indexChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
     'newChallengePage': function() { this.NewChallengePageView = new NewChallengePageView({router: this}); },
-    'selectPlaylistChallengePage': function() { this.SelectPlaylistChallengePageView = new SelectPlaylistChallengePageView({router: this}); },
+    'selectPlaylistChallengePage': function(type) { this.SelectPlaylistChallengePageView = new SelectPlaylistChallengePageView({router: this, type: type}); },
     'selectThingChallengePage': function() { this.SelectThingChallengePageView = new SelectThingChallengePageView({router: this}); },
     'sendChallengePage': function() { this.SendChallengePageView = new SendChallengePageView({router: this}); },
     'answerPage': function() { this.AnswerPageView = new AnswerPageView({router: this}); },

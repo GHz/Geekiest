@@ -84,7 +84,7 @@ function($,
                       },
                       success: function(response){
                         database.currentGame = response;
-                        self.router.navigate("challenge/index", {trigger: true, replace: true});
+                        self.router.navigate("challenge/index", {trigger: true});
                       }
                     });
                 break;
@@ -104,7 +104,7 @@ function($,
                         database.currentThing.end = ree[0].end_video;
                         database.currentThing.picker = false;
                         
-                        self.router.navigate("challenge/answer", {trigger: true, replace: true});
+                        self.router.navigate("challenge/answer", {trigger: true});
                       }
                     });
                 break;
@@ -117,7 +117,7 @@ function($,
                               game_id: database.currentGame
                         },
                         success: function(){
-                          self.router.navigate("dashboard", {trigger: true, replace: true});
+                          self.router.navigate("dashboard", {trigger: true});
                         }
                       });
 

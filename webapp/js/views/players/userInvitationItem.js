@@ -59,7 +59,7 @@ function(
 
                   }
 
-                  this.options.router.navigate("transition", {trigger: true, replace: true});
+                  this.options.router.navigate("transition", {replace: true});
 
                   return;
                 }

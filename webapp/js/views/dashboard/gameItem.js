@@ -63,7 +63,7 @@ function(
 
               }
 
-          this.options.router.navigate("transition", {trigger: true, replace: true});
+          this.options.router.navigate("transition", {trigger: true});
         },  
 
         answerCLick: function(e)
@@ -88,7 +88,7 @@ function(
                 action : "answer game"
 
             }
-            this.options.router.navigate("transition", {trigger: true, replace: true});
+            this.options.router.navigate("transition", {trigger: true});
         }
 	});
 });

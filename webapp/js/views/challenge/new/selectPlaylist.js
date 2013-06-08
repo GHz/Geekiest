@@ -3,13 +3,17 @@ define([
     "mustache",
     'packages/CustomView',
     'text!templates/challenge/new/selectPlaylist.html',
+    'views/challenge/new/playlistItem',
+    'collections/playlists'
 
 ],
     function(
         Backbone,
         Mustache,
         CustomView,
-        SelectPlaylistTemplate
+        SelectPlaylistTemplate,
+        PlaylistItemView,
+        Playlists
         ){
         return  CustomView.extend({
 
@@ -26,9 +30,36 @@ define([
                 }
 
                 this.router = opts.router;
+                this.type = opts.type;
+
+                    this.playlits = new Playlists(this.type);
+
+                var self = this;
+                this.playlits.fetch({
+                    error: function () {
+                    },
+                    success: function (e) {
+                        self.renderPlaylists();
+                    }
+                });
+
+                this.render();
             },
 
             events: {
+            },
+
+            render: function()
+            {
+                var html = Mustache.to_html(SelectPlaylistTemplate, {
+                    type: this.type
+                });
+                $('#main-content').html(html);
+            },
+
+            renderPlaylists: function()
+            {
+
             }
         });
     });

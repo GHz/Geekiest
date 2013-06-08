@@ -56,7 +56,7 @@ function($,
         },
 
         backBtnClick: function() {
-            this.router.navigate("challenge/index", {trigger: true, replace: true});
+            this.router.navigate("challenge/index", {trigger: true});
          },
 
         render: function()
@@ -97,7 +97,7 @@ function($,
 
                   },
                   success: function(response){
-                        self.router.navigate("dashboard", {trigger: true, replace: true});
+                        self.router.navigate("dashboard", {trigger: true});
                   }
             });
         }

@@ -19,7 +19,7 @@ function(
 
         	if(localStorage.getItem("userToken"))
         	{
-        		this.router.navigate("dashboard", {trigger: true, replace: true});
+        		this.router.navigate("dashboard", {trigger: true});
         		return;	 
         	}
 
@@ -55,7 +55,7 @@ function(
 					  	localStorage.setItem('userAvatar', datas.avatar);
 					  	localStorage.setItem('userId', datas.id);
 
-					  	self.router.navigate("players/invit", {trigger: true, replace: true});
+					  	self.router.navigate("players/invit", {trigger: true});
 					  }
 					});
 
@@ -65,7 +65,7 @@ function(
 
         howtoClick: function(e) {	
         	e.preventDefault();
-        	this.router.navigate("help", {trigger: true, replace: true});
+        	this.router.navigate("help", {trigger: true});
         },
 	});
 });

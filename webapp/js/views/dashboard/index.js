@@ -91,7 +91,7 @@ function(
    fiendFriencClick : function(e)
    {
       e.preventDefault();
-      this.router.navigate("players/invit", {trigger: true, replace: true});
+      this.router.navigate("players/invit", {trigger: true});
    }
 
 	});

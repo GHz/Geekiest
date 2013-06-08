@@ -57,7 +57,7 @@ function(
      },
 
      backBtnClick: function() {
-        this.router.navigate("dashboard", {trigger: true, replace: true});
+        this.router.navigate("dashboard", {trigger: true});
      },
 
     fetchData: function()
@@ -94,7 +94,7 @@ function(
     newChallenge : function(e)
     {
         e.preventDefault();
-        this.options.router.navigate("challenge/new", {trigger: true, replace: true});
+        this.options.router.navigate("challenge/new", {trigger: true});
     }
 
     });

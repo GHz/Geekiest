@@ -86,7 +86,7 @@ function(
         validateClick: function(e)
         {
             this.undelegateEvents();
-            this.router.navigate("dashboard", {trigger: true, replace: true});
+            this.router.navigate("dashboard", {trigger: true});
         }
 	});
 });

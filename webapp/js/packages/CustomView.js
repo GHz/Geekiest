@@ -33,8 +33,6 @@ function($,
                 'validateBtn': this.validateBtn,
                 'refreshRightBtn': this.refreshRightBtn
             }));
-        	
-            
         }
 
         /*,
