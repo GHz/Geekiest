@@ -81,15 +81,18 @@ function($,
                             calculate: function( value ){
                                 var minutes = Math.floor( value / 60 );
                                 var seconds = ( value - minutes*60 );
-                                return (minutes < 10 ? "0"+minutes : minutes) + "     :     " + ( seconds == 0 ? "00" : seconds );
+                                return (minutes < 10 ? "0"+minutes : minutes)
+                                    + "     :     "
+                                    + ( seconds < 10 ? "0"+seconds : seconds);
                             },
                             onstatechange: function( value ){
                                 self.updatePickersPos(value);
                             }
                         });
 
+                       // self.updatePickersPos(self.startPicker);
                         var pCt = (self.model.start / self.model.youtube_length * 100);
-                        $('.currentpos').css('left', pCt+"%");                       
+                        $('.currentpos').css('left', pCt+"%");
                     }
                 }
             });
@@ -102,7 +105,7 @@ function($,
         		this.player.pauseVideo();
         		$('.playpausebtn').removeClass('play');
         		this.isPlaying = false;
-        		clearInterval(this.intervalTimer);
+                this.unsetIntervalTimer();
         	}
         	else
         	{
@@ -122,6 +125,11 @@ function($,
                     self.updateCursorPos(self.player.getCurrentTime());
                 }
             },100);
+        },
+
+        unsetIntervalTimer: function()
+        {
+            clearInterval(this.intervalTimer);
         },
 
         updateCursorPos: function(currentTime)

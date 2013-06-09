@@ -56,6 +56,8 @@ function($,
         },
 
         backBtnClick: function() {
+            this.mediaPlayer.unsetIntervalTimer();
+            this.mediaPlayer.undelegateEvents();
             this.router.navigate("challenge/index", {trigger: true});
          },
 
@@ -65,7 +67,7 @@ function($,
         		model: _.extend( this.model.toJSON(),
                 {
 					"picker": true,
-					"height": "230px",
+					"height": "230px"
         		})
         	});
 
