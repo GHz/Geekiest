@@ -32,7 +32,7 @@ define([
                 this.router = opts.router;
                 this.type = opts.type;
 
-                    this.playlists = new Playlists(this.type);
+                this.playlists = new Playlists(this.type);
 
                 var self = this;
                 this.playlists.fetch({

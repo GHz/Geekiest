@@ -3,13 +3,16 @@ define([
     "mustache",
     'packages/CustomView',
     'text!templates/challenge/new/selectThing.html',
-
+    'collections/playlistItems',
+    'views/challenge/new/thingItem'
 ],
     function(
         Backbone,
         Mustache,
         CustomView,
-        SelectThingTemplate
+        SelectThingTemplate,
+        Things,
+        ThingItemView
         ){
         return  CustomView.extend({
 
@@ -26,7 +29,19 @@ define([
                 }
 
                 this.router = opts.router;
+                this.type = opts.type;
+                this.id = opts.id;
 
+                this.things = new Things(this.id);
+
+                var self = this;
+                this.things.fetch({
+                    error: function () {
+                    },
+                    success: function (e) {
+                        self.renderThings();
+                    }
+                });
                 this.render();
             },
 
@@ -35,7 +50,28 @@ define([
 
             render: function()
             {
+                var html = Mustache.to_html(SelectThingTemplate, {
+                    type: this.type,
+                    title: database["currentPlaylistName"]
+                });
+                $('#main-content').html(html);
+            },
 
+            renderThings: function()
+            {
+                var self = this, thingItem;
+                $("#playlistsList").html('');
+                self.things.each(function(thing, index, things)
+                {
+                    thingItem = new ThingItemView({
+                        model: thing,
+                        type: self.type,
+                        collection: self.things,
+                        router: self.router
+                    });
+
+                    $("#playlistItemsList").append(thingItem.render().el);
+                });
             }
         });
     });
