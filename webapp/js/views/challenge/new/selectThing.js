@@ -26,9 +26,16 @@ define([
                 }
 
                 this.router = opts.router;
+
+                this.render();
             },
 
             events: {
+            },
+
+            render: function()
+            {
+
             }
         });
     });

@@ -14,8 +14,10 @@ define([
         return  Backbone.View.extend({
             tagName:'li',
 
-            initialize: function()
+            initialize: function(opts)
             {
+                this.router = opts.router;
+                this.type = opts.type;
             },
 
             events: {
@@ -35,6 +37,12 @@ define([
             selectItem: function(e)
             {
                 e.preventDefault();
+                console.log(this)
+                this.router.navigate("challenge/new/playlist/"
+                    +this.type
+                    +"/"
+                    +this.model.get('id')
+                    , {trigger: true});
             }
         });
     });

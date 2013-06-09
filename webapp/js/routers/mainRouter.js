@@ -63,8 +63,8 @@ return Backbone.Router.extend(
         //Challenge
         'challenge/index' : 'indexChallengePage',
         'challenge/new' : 'newChallengePage',
+        'challenge/new/playlist/:type/:id' : 'selectThingChallengePage',
         'challenge/new/:type' : 'selectPlaylistChallengePage',
-        'challenge/new/playlist/:id' : 'selectThingChallengePage',
         'challenge/send' : 'sendChallengePage',
         'challenge/answer' : 'answerPage',
 
@@ -84,7 +84,7 @@ return Backbone.Router.extend(
     'indexChallengePage': function() { this.IndexChallengePageView = new IndexChallengePageView({router: this}); },
     'newChallengePage': function() { this.NewChallengePageView = new NewChallengePageView({router: this}); },
     'selectPlaylistChallengePage': function(type) { this.SelectPlaylistChallengePageView = new SelectPlaylistChallengePageView({router: this, type: type}); },
-    'selectThingChallengePage': function() { this.SelectThingChallengePageView = new SelectThingChallengePageView({router: this}); },
+    'selectThingChallengePage': function(type,id) { this.SelectThingChallengePageView = new SelectThingChallengePageView({router: this, type: type, id: id}); },
     'sendChallengePage': function() { this.SendChallengePageView = new SendChallengePageView({router: this}); },
     'answerPage': function() { this.AnswerPageView = new AnswerPageView({router: this}); },
 

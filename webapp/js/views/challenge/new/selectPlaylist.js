@@ -32,10 +32,10 @@ define([
                 this.router = opts.router;
                 this.type = opts.type;
 
-                    this.playlits = new Playlists(this.type);
+                    this.playlists = new Playlists(this.type);
 
                 var self = this;
-                this.playlits.fetch({
+                this.playlists.fetch({
                     error: function () {
                     },
                     success: function (e) {
@@ -51,15 +51,45 @@ define([
 
             render: function()
             {
+                var typeName = "";
+                switch(this.type)
+                {
+                    case "movie":
+                        typeName = "movies";
+                        break;
+                    case "tvshow":
+                        typeName = "tv shows";
+                        break;
+                    case "videogame":
+                        typeName = "video games";
+                        break;
+                    case "comic":
+                        typeName = "comics";
+                        break;
+                }
+
                 var html = Mustache.to_html(SelectPlaylistTemplate, {
-                    type: this.type
+                    type: this.type,
+                    title: typeName
                 });
                 $('#main-content').html(html);
             },
 
             renderPlaylists: function()
             {
+                var self = this, playlistItem;
+                $("#playlistsList").html('');
+                self.playlists.each(function(playlist, index, playlists)
+                {
+                    gameItem = new PlaylistItemView({
+                        model: playlist,
+                        type: self.type,
+                        collection: self.playlists,
+                        router: self.router
+                    });
 
+                    $("#playlistsList").append(gameItem.render().el);
+                });
             }
         });
     });
