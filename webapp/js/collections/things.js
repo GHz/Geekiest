@@ -8,6 +8,6 @@ define([
 
 	url: function() {
 		return "http://serene-forest-6114.herokuapp.com/users/random_challenges"
-	},
+	}
   });
 });

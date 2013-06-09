@@ -1,19 +1,25 @@
 define([
     'underscore',
     'backbone',
-    'collections/medias'
-], function( _, Backbone, HostContents){
-    return Medias.extend({
-        title: 'youtube',
-        type: 30,
-        url: "https://gdata.youtube.com/feeds/api/videos?v=2&callback=?&alt=jsonc",
-        queryGetParamName: 'q',
-        limitGetParamName: 'max-results',
-        charIcon: '',
+    'models/media'
+], function( _, Backbone, Media){
+    return Backbone.Collection.extend({
+        model: Media,
+
+        url: function() {
+            return "https://gdata.youtube.com/feeds/api/videos?v=2&callback=?&alt=jsonc&q=" + this.queryName + "&max-results=" + this.queryLimit;
+        },
+
+        initialize: function(queryName, queryLimit, forceTrailer)
+        {
+            this.queryName = queryName + forceTrailer ? " trailer" : "";
+            this.queryLimit = queryLimit;
+        },
 
         parse: function(response) {
             var data = response.data.items;
             var contents = [], content;
+
             if(data)
             {
                 for(var i in data)
@@ -33,15 +39,6 @@ define([
                 }
             }
             return contents;
-        },
-
-        //For the data fetching
-        queryParams: function(query, limit)
-        {
-            var params = {};
-            if(query) { params[this.queryGetParamName] = query }
-            if(limit) { params[this.limitGetParamName] = limit }
-            return params;
-        },
+        }
     });
 });

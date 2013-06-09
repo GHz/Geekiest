@@ -1,15 +1,14 @@
 define([
     'backbone',
     "mustache",
-    'text!templates/challenge/new/thingItem.html',
-    'models/Thing',
-
+    'text!templates/challenge/new/mediaItem.html',
+    'models/Media',
 ],
     function(
         Backbone,
         Mustache,
-        ThingItemTemplate,
-        Thing
+        MediaItemTemplate,
+        Media
         ){
         return  Backbone.View.extend({
             tagName:'li',
@@ -21,12 +20,11 @@ define([
             },
 
             events: {
-                'click' : 'selectThing'
+                'click' : 'selectMedia'
             },
 
             render: function() {
-                var html = Mustache.to_html(ThingItemTemplate, {
-                    posterUrl : this.model.get('cover')
+                var html = Mustache.to_html(MediaItemTemplate, {
                 });
 
                 this.$el.html(html);
@@ -34,10 +32,11 @@ define([
                 return this;
             },
 
-            selectThing: function(e)
+            selectMedia: function(e)
             {
                 e.preventDefault();
-                database["currentThing"] = this.model.toJSON();
+                console.log(this);
+                return;
                 this.router.navigate("challenge/new/playlist/"
                     +this.type
                     +"/"

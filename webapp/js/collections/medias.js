@@ -2,7 +2,7 @@ define([
   'underscore',
   'backbone',
   'models/media'
-], function( _, Backbone, Content){
+], function( _, Backbone, Media){
   return Backbone.Collection.extend({
     model: Media
   });
