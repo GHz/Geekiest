@@ -90,7 +90,6 @@ function($,
                             }
                         });
 
-                       // self.updatePickersPos(self.startPicker);
                         var pCt = (self.model.start / self.model.youtube_length * 100);
                         $('.currentpos').css('left', pCt+"%");
                     }
@@ -124,7 +123,7 @@ function($,
                 {
                     self.updateCursorPos(self.player.getCurrentTime());
                 }
-            },100);
+            },1);
         },
 
         unsetIntervalTimer: function()
