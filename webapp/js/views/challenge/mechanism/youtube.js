@@ -26,8 +26,6 @@ function($,
         
         initialize : function()
         {
-            //eval(" this.model = " + this.model);
-
             this.startPicker = this.model.start;
             this.newCurrentPos = this.model.start;
             this.endPicker = this.model.end;
@@ -35,18 +33,11 @@ function($,
 
         events: {
         	'click .playpausebtn' : 'playPauseBtnClick',
-        	'click .overlay' : 'playPauseBtnClick',
+        	'click .overlay' : 'playPauseBtnClick'
         },
 
         render: function()
         {
-            var test = _.extend(
-                this.model,
-                {
-                    start: this.startPicker,
-                    end: this.endPicker
-                });
-
         	var html = Mustache.to_html(YoutubeplayerTemplate, _.extend(
                 this.model,
                 {
@@ -56,7 +47,6 @@ function($,
             );
 
 			this.$el.html(html);
-
         	return this;
         },
 
@@ -64,6 +54,8 @@ function($,
         {
             var self = this;
 
+            //Load the youtube player
+            //See https://developers.google.com/youtube/js_api_reference
             this.player = new YT.Player('player', {
                 height: '230px',
                 videoId: this.model.youtube_id,
@@ -77,7 +69,9 @@ function($,
                 },
 
                 events: {
-                    'onReady': function(){
+                    'onReady': function()
+                    {
+                        //Load the double time picker
                         $("#videoPicker").slider({
                             from: 0,
                             to: parseInt(self.model.youtube_length),
@@ -85,16 +79,16 @@ function($,
                             dimension: '',
                             limits: false,
                             calculate: function( value ){
-                                var hours = Math.floor( value / 60 );
-                                var mins = ( value - hours*60 );
-                                return (hours < 10 ? "0"+hours : hours) + "     :     " + ( mins == 0 ? "00" : mins );
+                                var minutes = Math.floor( value / 60 );
+                                var seconds = ( value - minutes*60 );
+                                return (minutes < 10 ? "0"+minutes : minutes) + "     :     " + ( seconds == 0 ? "00" : seconds );
                             },
                             onstatechange: function( value ){
-                                self.updateCursorPos(value);
+                                self.updatePickersPos(value);
                             }
                         });
 
-                        var pCt = (self.startPicker / self.model.youtube_length * 100);
+                        var pCt = (self.model.start / self.model.youtube_length * 100);
                         $('.currentpos').css('left', pCt+"%");                       
                     }
                 }
@@ -123,64 +117,76 @@ function($,
         {
             var self = this;
             this.intervalTimer = setInterval(function(){
-
-
-                var currentTime = self.player.getCurrentTime();
-
-                if(currentTime > self.endPicker || currentTime < self.startPicker)
+                if(!self.isChanging)
                 {
-                    self.player.seekTo(self.startPicker);
+                    self.updateCursorPos(self.player.getCurrentTime());
                 }
-
-
-                var pCt = (currentTime / self.model.youtube_length * 100);
-                $('.currentpos').css('left', pCt+"%");
-
-
             },100);
         },
 
-        updateCursorPos: function(value)
+        updateCursorPos: function(currentTime)
+        {
+            var pCt;
+            if(currentTime > this.endPicker || currentTime < this.startPicker)
+            {
+                this.player.seekTo(this.startPicker);
+            }
+
+            if(currentTime > this.endPicker)
+            {
+                pCt = (this.endPicker / this.model.youtube_length * 100);
+            }
+            else if(currentTime < this.startPicker)
+            {
+                pCt = (this.startPicker / this.model.youtube_length * 100);
+            }
+            else
+            {
+                pCt = (currentTime / this.model.youtube_length * 100);
+            }
+
+            $('.currentpos').css('left', pCt+"%");
+        },
+
+        updatePickersPos: function(value)
         {
         	var dataSplit = value.split(";");
     		this.startPicker = dataSplit[0];
     		this.endPicker = dataSplit[1];
 
-    		var currentPos = this.player.getCurrentTime();
+    		var currentTime = this.player.getCurrentTime();
     		
-            if(currentPos == this.newCurrentPos)
+            if(currentTime == this.newCurrentPos)
             {
                 return;
             }
 
-            this.newCurrentPos = currentPos;
+            this.isChanging = true;
 
-    		if(currentPos<this.startPicker)
+            this.newCurrentPos = currentTime;
+
+    		if(currentTime<this.startPicker)
     		{
     			this.newCurrentPos = this.startPicker;
     		}
-    		else if(currentPos>this.endPicker)
+    		else if(currentTime>this.endPicker)
     		{
     			this.newCurrentPos = this.endPicker;
     		}
 
             this.currentPos = this.newCurrentPos;
-            
+
+            this.isChanging = false;
+
 		    if(this.isInit < 0)
 		    {
-		    	//$('.playpausebtn').addClass('play');
-		    	//this.isPlaying = true;
-                //this.setIntervalTimer();
-
                 this.isInit++;
                 return;
 		    }
-            else
+            else if(!(this.currentPos > this.startPicker) && !(this.currentPos < this.endPicker) )
             {
-                this.player.seekTo(this.newCurrentPos);
-                this.setIntervalTimer();
+               this.setIntervalTimer();
             }
-        },
-
+        }
 	});
 });
