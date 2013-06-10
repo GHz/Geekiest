@@ -36,8 +36,7 @@ define([
 
                 var self = this;
                 this.playlists.fetch({
-                    error: function () {
-                    },
+
                     success: function (e) {
                         self.renderPlaylists();
                     }

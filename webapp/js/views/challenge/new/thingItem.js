@@ -38,7 +38,7 @@ define([
             {
                 e.preventDefault();
                 database["currentThing"] = this.model.toJSON();
-                this.router.navigate("challenge/new/playlist/"
+                this.router.navigate("challenge/new/thing/"
                     +this.type
                     +"/"
                     +this.model.get('id')

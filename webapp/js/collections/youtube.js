@@ -22,6 +22,7 @@ define([
 
             if(data)
             {
+                console.log(data)
                 for(var i in data)
                 {
                     content = {};
@@ -34,6 +35,7 @@ define([
                     content.externalId = data[i].id;
                     content.publicationDate = new Date(data[i].uploaded);
                     content.url = data[i].player['default'];
+                    content.viewCount = data[i].viewCount;
 
                     contents.push(content);
                 }

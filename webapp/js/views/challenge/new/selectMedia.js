@@ -36,8 +36,6 @@ define([
 
                 var self = this;
                 this.videos.fetch({
-                    error: function () {
-                    },
                     success: function (e) {
                         console.log(e)
                         self.renderMedias();
@@ -53,7 +51,8 @@ define([
             {
                 var html = Mustache.to_html(SelectMediaTemplate, {
                     type: this.type,
-                    title: database["currentPlaylistName"]
+                    title: database["currentThing"].title,
+                    cover: database["currentThing"].cover
                 });
                 $('#main-content').html(html);
             },

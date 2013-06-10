@@ -36,8 +36,7 @@ define([
 
                 var self = this;
                 this.things.fetch({
-                    error: function () {
-                    },
+
                     success: function (e) {
                         self.renderThings();
                     }

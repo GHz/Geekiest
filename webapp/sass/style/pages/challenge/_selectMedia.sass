@@ -1,7 +1,25 @@
+@import "compass/css3/shared"
+
 article.selectMedia
   background-color: #2c2c2c
   min-height: 100%
-  padding-bottom: 130px
+  padding-bottom: 25px
+  position: relative
+  color: white
+
+  > .cover
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    z-index: 300
+    +opacity(0.3)
+    +filter(blur(6px))
+    background-attachment: fixed
+    background-size: auto 100%
+    background-position: center center
+
 
   header
     font-size: 27px
@@ -25,3 +43,28 @@ article.selectMedia
 
     &.comic
       background-color: #d4a13c
+
+
+  #mediatItemsList
+    position: relative
+    z-index: 400
+    padding-top: 95px
+
+    li
+      clear: both
+      margin-bottom: 30px
+
+      h2
+        font-size: 20px
+        font-weight: bold
+
+      .info
+        +experimental-value(margin-left, calc(35% + 20px))
+
+      .data
+        padding-top: 5px
+        color: #C2C2C2
+
+      .cover
+        width: 35%
+        margin-right: 20px
