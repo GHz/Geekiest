@@ -8,112 +8,56 @@
  | |__| | |____| |____| . \ _| |_| |____ ____) |  | |
   \_____|______|______|_|\_\_____|______|_____/   |_|
   TEAM HS       -->
-	<head>
-		<title>GEEKIEST</title>
-		 <link rel="stylesheet" media="screen" href="css/style.css" />
-		 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-        <script src="js/libs/fastclick.js"></script>
-    </head>
-	<body>
-		<div class="app"></div>
-		<script src="https://www.youtube.com/iframe_api"></script>
-		<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
-        <script src="js/almond.js"></script>
-        <script src="js/main_app.js"></script>
-		<div id="fb-root"></div>
-        <script src="phonegap.js"></script>
-        <script src="cdv-plugin-fb-connect.js"></script>
-        <script src="facebook-js-sdk.js"></script>
-        <script>
-            var Facebook;
-            document.addEventListener('deviceready', function() {
-             //       $('body').addClass("owi");
-                alert('Device is ready!');
-                    FastClick.attach(document.body);
-              /*  try {
-                    FB.init({
-                        appId      : '340107129425326', // App ID
-                        //channelUrl : '//localhost/', // Channel File
-                        //      status     : true, // check login status
-                        //  cookie     : true, // enable cookies to allow the server to access the session
-                        // xfbml      : true,
-                        // oauth      : true,  // parse XFBML
-                        nativeInterface : CDV.FB,
-                        useCachedDialogs : false
-                    });
-                } catch (e) {
-                    alert(e);
-                }
-            }, false);
+<head>
+    <title>GEEKIEST</title>
+    <link rel="stylesheet" media="screen" href="css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <script src="js/libs/fastclick.js"></script>
+</head>
+<body>
+<div class="app"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
+<script src="js/almond.js"></script>
+<script src="js/main_app.js"></script>
+<div id="fb-root"></div>
 
-
-*/
-
-                var my_client_id = "340107129425326", // YOUR APP ID
-                        my_secret = "b2d5a0954363b99ceb29ee36c78d6ab7", // YOUR APP SECRET
-                        my_redirect_uri = "https://www.facebook.com/connect/login_success.html", // LEAVE THIS
-                        my_type ="user_agent", my_display = "touch"; // LEAVE THIS
-
-                var facebook_token = "fbToken"; // OUR TOKEN KEEPER
-                var ref; //IN APP BROWSER REFERENCE
-
-// FACEBOOK
-                Facebook = {
-                    init:function(){
-                        // Begin Authorization
-                        var authorize_url = "https://www.facebook.com/dialog/oauth?";
-                        authorize_url += "client_id=" + my_client_id;
-                        authorize_url += "&redirect_uri=" + my_redirect_uri;
-                        authorize_url += "&display=" + my_display;
-                        authorize_url += "&scope=publish_stream";
-
-                        //CALL IN APP BROWSER WITH THE LINK
-                        ref = window.open(authorize_url, '_blank', 'location=no');
-
-                        ref.addEventListener('loadstart', function(event){
-
-                            Facebook.facebookLocChanged(event.url);
-
-                        });
-
-                    },
-                    facebookLocChanged:function(loc){
-
-                        if (loc.indexOf("code=") >= 1  ) {
-
-                            //CLOSE INAPPBROWSER AND NAVIGATE TO INDEX
-                            ref.close();
-
-                            //THIS IS MEANT TO BE DONE ON SERVER SIDE TO PROTECT CLIENT SECRET
-                            var codeUrl = 'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&redirect_uri='+my_redirect_uri+'&code='+loc.split("=")[1];
-                            console.log('CODE_URL::' + codeUrl);
-                            $.ajax({
-                                url: codeUrl,
-                                data: {},
-                                type: 'POST',
-                                async: false,
-                                cache: false,
-                                success: function(data, status){
-                                    //WE STORE THE TOKEN HERE
-                                    localStorage.setItem(facebook_token, data.split('=')[1].split('&')[0]);
-
-                                },
-                                error: function(){
-                                    alert("Unknown error Occured");
-                                }
-                            });
-                        }
-                    }
-                /* (function(d){
-                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                 if (d.getElementById(id)) {return;}
-                 js = d.createElement('script'); js.id = id; js.async = true;
-                 js.src = "//connect.facebook.net/fr_FR/all.js";
-                 ref.parentNode.insertBefore(js, ref);
-                 }(document));*/
-
-                var database = {};
+<script src="phonegap.js"></script>
+<script src="cdv-plugin-fb-connect.js"></script>
+<script src="facebook-js-sdk.js"></script>
+<script>
+    document.addEventListener('deviceready', function() {
+        $('body').addClass("owi");
+        alert('Device is ready!');
+        FastClick.attach(document.body);
+        try {
+            FB.init({
+                appId      : '340107129425326', // App ID
+                //channelUrl : '//localhost/', // Channel File
+                //      status     : true, // check login status
+                //  cookie     : true, // enable cookies to allow the server to access the session
+                // xfbml      : true,
+                // oauth      : true,  // parse XFBML
+                nativeInterface : CDV.FB,
+                useCachedDialogs : false
             });
-        </script>
-	</body>
+        } catch (e) {
+            alert(e);
+        }
+
+
+
+
+        /* (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/fr_FR/all.js";
+         ref.parentNode.insertBefore(js, ref);
+         }(document));*/
+
+        var database = {};
+    }, false);
+</script>
+</body>
 </html>
