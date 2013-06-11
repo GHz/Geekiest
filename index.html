@@ -30,17 +30,20 @@
                 FastClick.attach(document.body);
             });
 
-		  window.fbAsyncInit = function() {
-		    FB.init({
-		    appId      : '340107129425326', // App ID
-		    channelUrl : '//localhost/', // Channel File
-		    status     : true, // check login status
-		    cookie     : true, // enable cookies to allow the server to access the session
-		    xfbml      : true,
-		    oauth      : true  // parse XFBML
-		  });
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '340107129425326', // App ID
+                    //channelUrl : '//localhost/', // Channel File
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    xfbml      : true,
+                    oauth      : true,  // parse XFBML
+                    nativeInterface : CDV.FB,
+                    useCachedDialogs : false
+                });
 
-		  };
+            };
+
 
 		  (function(d){
 		   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
