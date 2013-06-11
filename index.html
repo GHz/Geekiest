@@ -25,7 +25,7 @@
         <script src="js/main_app.js"></script>
 		<div id="fb-root"></div>
 		<script>
-            $(document).on('mobileinit', function() {
+            document.addEventListener('deviceready', function() {
                 $(function() {
                     FastClick.attach(document.body);
                 });
@@ -34,10 +34,10 @@
                     FB.init({
                         appId      : '340107129425326', // App ID
                         //channelUrl : '//localhost/', // Channel File
-                        status     : true, // check login status
-                        cookie     : true, // enable cookies to allow the server to access the session
-                        xfbml      : true,
-                        oauth      : true,  // parse XFBML
+                  //      status     : true, // check login status
+                      //  cookie     : true, // enable cookies to allow the server to access the session
+                       // xfbml      : true,
+                       // oauth      : true,  // parse XFBML
                         nativeInterface : CDV.FB,
                         useCachedDialogs : false
                     });
@@ -45,13 +45,13 @@
                 };
 
 
-              (function(d){
+             /* (function(d){
                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
                if (d.getElementById(id)) {return;}
                js = d.createElement('script'); js.id = id; js.async = true;
                js.src = "//connect.facebook.net/fr_FR/all.js";
                ref.parentNode.insertBefore(js, ref);
-             }(document));
+             }(document));*/
 
             var database = {};
             });
