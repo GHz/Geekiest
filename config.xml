@@ -54,7 +54,7 @@
         <param name="APP_ID" value="340107129425326" />
     </gap:plugin>
     <plugin name="org.apache.cordova.facebook.Connect" value="org.apache.cordova.facebook.ConnectPlugin" />
-
+    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
     <!--
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
