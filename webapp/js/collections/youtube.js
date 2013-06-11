@@ -12,7 +12,7 @@ define([
 
         initialize: function(queryName, queryLimit, forceTrailer)
         {
-            this.queryName = queryName + forceTrailer ? " trailer" : "";
+            this.queryName = queryName + (forceTrailer ? " trailer" : "");
             this.queryLimit = queryLimit;
         },
 
@@ -22,7 +22,6 @@ define([
 
             if(data)
             {
-                console.log(data)
                 for(var i in data)
                 {
                     content = {};

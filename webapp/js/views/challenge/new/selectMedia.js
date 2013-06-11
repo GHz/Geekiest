@@ -31,13 +31,13 @@ define([
                 this.router = opts.router;
                 this.type = opts.type;
                 this.id = opts.id;
+                this.model = database.currentThing;
 
-                this.videos = new YoutubeItems("Inception",10,true);
+                this.videos = new YoutubeItems(this.model.title,10,true);
 
                 var self = this;
                 this.videos.fetch({
                     success: function (e) {
-                        console.log(e)
                         self.renderMedias();
                     }
                 });
