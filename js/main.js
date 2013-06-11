@@ -1,9 +1,8 @@
 require.config({
-    'baseUrl': './js',
+    'baseUrl': '/Geekiest/webapp/js',
     //'baseUrl': 'http://localhost/Geekiest/webapp/js',
     'paths':
     {
-        "jquery" : "empty:",
         "underscore": "libs/vendor/underscore-min",
         "backbone": "libs/vendor/backbone-min",
         "mustache": 'libs/vendor/mustache'

@@ -1,68 +1,4 @@
 ({
-// Nice not to inline/minify things for debugging
-    optimize: "none",
-
-// Base js directory relative to the build js
-    baseUrl: './',
-
-// Main script file for the app
-    name: 'main',
-
-// Add load trigger to automatically start main module after require is initialized
-    insertRequire: ['main'],
-
-// File to output compiled js to
-    out: './main_app.js',
-
-    'paths':
-    {
-        "jquery" : "loader.jquery",
-        "underscore": "libs/vendor/underscore-min",
-        "backbone": "libs/vendor/backbone-min",
-        "mustache": 'libs/vendor/mustache'
-    },'shim':
-    {
-        //Vendor Libs (js/libs/vendor/*)
-        //-----------------------------------------
-        'backbone':
-        {
-            'deps': ['jquery', 'underscore'],
-            'exports': 'Backbone'
-        },
-
-        //jQuery UI Components
-        //----------------------------------------
-        //@TODO : Manage jQ UI components' dependances
-        'libs/jquery-ui.min':
-        {
-            deps: ['jquery'],
-            exports: '$.ui'
-        },
-
-        //jQuery Libs (js/libs/*)
-        //-----------------------------------------
-        'libs/jquery.slider':
-        {
-            deps: ['jquery'],
-            'exports': '$.fn.slider'
-        },
-
-        'libs/jquery.autotab':
-        {
-            deps: ['jquery'],
-            'exports': '$.fn.autotab_magic'
-        },
-
-        //jQueryUI Libs (js/libs/*)
-        //-----------------------------------------
-
-        //Ohter Libs (js/libs/*)
-        //-----------------------------------------
-
-    }
-})
-
-/*({
     //Default config
     //--------------------------------------------------------------
     appDir: "./",
@@ -118,4 +54,4 @@
             exclude: ["jquery"]
         }
     ]
-})*/
+})
