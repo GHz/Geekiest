@@ -13,16 +13,23 @@
 		 <link rel="stylesheet" media="screen" href="css/style.css" />
 		 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
         <script src="js/libs/fastclick.js"></script>
+    </head>
+	<body>
+		<div class="app"></div>
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
+        <script src="js/almond.js"></script>
+        <script src="js/main_app.js"></script>
+		<div id="fb-root"></div>
         <script src="phonegap.js"></script>
         <script src="cdv-plugin-fb-connect.js"></script>
         <script src="facebook-js-sdk.js"></script>
         <script>
             document.addEventListener('deviceready', function() {
-                $(function() {
+                    $('body').addClass("owi");
+                alert('Device is ready!');
                     FastClick.attach(document.body);
-                });
-
-                window.fbAsyncInit = function() {
+                try {
                     FB.init({
                         appId      : '340107129425326', // App ID
                         //channelUrl : '//localhost/', // Channel File
@@ -33,8 +40,11 @@
                         nativeInterface : CDV.FB,
                         useCachedDialogs : false
                     });
+                } catch (e) {
+                    alert(e);
+                }
 
-                };
+
 
 
                 /* (function(d){
@@ -46,15 +56,7 @@
                  }(document));*/
 
                 var database = {};
-            });
+            }, false);
         </script>
-    </head>
-	<body>
-		<div class="app"></div>
-		<script src="https://www.youtube.com/iframe_api"></script>
-		<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
-        <script src="js/almond.js"></script>
-        <script src="js/main_app.js"></script>
-		<div id="fb-root"></div>
 	</body>
 </html>
