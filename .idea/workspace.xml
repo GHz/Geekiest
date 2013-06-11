@@ -4,7 +4,7 @@
     <list default="true" id="b558d7e2-fcab-4086-820b-47702aeafad7" name="Default" comment="" />
     <ignored path="Geekiest.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/index.html" changelist="b558d7e2-fcab-4086-820b-47702aeafad7" time="1370938607111" ignored="false" />
+    <file path="/index.html" changelist="b558d7e2-fcab-4086-820b-47702aeafad7" time="1370940957468" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +27,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="44" selection-start="801" selection-end="801" vertical-scroll-proportion="0.47126436">
+            <state line="22" column="32" selection-start="927" selection-end="927" vertical-scroll-proportion="0.4229885">
               <folding />
             </state>
           </provider>
@@ -257,7 +257,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="801" selection-end="801" vertical-scroll-proportion="0.47126436">
+        <state line="22" column="32" selection-start="927" selection-end="927" vertical-scroll-proportion="0.4229885">
           <folding />
         </state>
       </provider>
