@@ -172,7 +172,7 @@
 
             },
             facebookLocChanged:function(loc){
-
+                console.log(loc);
                 if (loc.indexOf("code=") >= 1  ) {
 
                     //CLOSE INAPPBROWSER AND NAVIGATE TO INDEX
@@ -188,10 +188,14 @@
                         async: false,
                         cache: false,
                         success: function(data, status){
+                            alert(data);
+                            alert(status);
                             //WE STORE THE TOKEN HERE
                             localStorage.setItem(facebook_token, data.split('=')[1].split('&')[0]);
+
                         },
-                        error: function(){
+                        error: function(data){
+                            alert(data);
                             alert("Unknown error Occured");
                         }
                     });
