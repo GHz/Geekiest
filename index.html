@@ -17,20 +17,30 @@
 <body>
 <div class="app"></div>
 <script src="https://www.youtube.com/iframe_api"></script>
-<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
+<script data-main="js/main" src="js/require-jquery.js"></script>
+<!--<script src="js/libs/vendor/jquery-1.10.1.min.js"></script>
 <script src="js/almond.js"></script>
-<script src="js/main_app.js"></script>
+<script src="js/main_app.js"></script>-->
 <div id="fb-root"></div>
 
 <script src="phonegap.js"></script>
 <script src="cdv-plugin-fb-connect.js"></script>
 <script src="facebook-js-sdk.js"></script>
 <script>
-    document.addEventListener('deviceready', function() {
-        $('body').addClass("owi");
-        alert('Device is ready!' + '340107129425326');
+ //   document.addEventListener('deviceready', function() {
+     //   $('body').addClass("owi");
+     //   alert('Device is ready!' + '340107129425326');
         FastClick.attach(document.body);
-      /* try {
+ /
+ (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/fr_FR/all.js";
+     ref.parentNode.insertBefore(js, ref);
+ }(document));
+
+
             FB.init({
                 appId      : '340107129425326', // App ID
                 //channelUrl : '//localhost/', // Channel File
@@ -41,13 +51,10 @@
                 nativeInterface : CDV.FB,
                 useCachedDialogs : false
             });
-        } catch (e) {
-            alert(e);
-        }
-        */
 
 
 
+/*
 
         var my_client_id = "340107129425326", // YOUR APP ID
                 my_secret = "b2d5a0954363b99ceb29ee36c78d6ab7", // YOUR APP SECRET
@@ -71,7 +78,7 @@
                 ref = window.open(authorize_url, '_blank', 'location=no');
 
                 ref.addEventListener('loadstart', function(event){
-
+console.log(event);
                     Facebook.facebookLocChanged(event.url);
 
                 });
@@ -105,17 +112,31 @@
             }
         }
         Facebook.init();
+*/
+ var player = null;
+ window.fbAsyncInit = function() {
+     FB.init({
+         appId      : '340107129425326', // App ID
+         channelUrl : '//localhost/', // Channel File
+         status     : true, // check login status
+         cookie     : true, // enable cookies to allow the server to access the session
+         xfbml      : true,
+         oauth      : true  // parse XFBML
+     });
 
-        /* (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/fr_FR/all.js";
-         ref.parentNode.insertBefore(js, ref);
-         }(document));*/
+ };
+
+ (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/fr_FR/all.js";
+     ref.parentNode.insertBefore(js, ref);
+ }(document));
+
 
         var database = {};
-    }, false);
+ //   }, false);
 </script>
 </body>
 </html>

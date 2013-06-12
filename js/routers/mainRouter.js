@@ -47,7 +47,7 @@ return Backbone.Router.extend(
     initialize: function()
     {
         Backbone.history.start({
-            root: "/Geekiest/webapp/",
+            root: "./",
             pushState: false
         });
     },

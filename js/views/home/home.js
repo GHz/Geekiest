@@ -13,6 +13,9 @@ function(
 	return  Backbone.View.extend({
 		el: '.app',
 
+        my_client_id: "340107129425326",
+
+
         initialize: function(opts)
         {
         	this.router = opts.router;
@@ -20,7 +23,7 @@ function(
         	if(localStorage.getItem("userToken"))
         	{
         		this.router.navigate("dashboard", {trigger: true});
-        		return;	 
+        		return;
         	}
 
         	var html = Mustache.to_html(HomeTemplate);
@@ -29,7 +32,7 @@ function(
 
         events: {
         	'click .facebook': 'facebookClick',
-        	'click .howto': 'howtoClick',
+        	'click .howto': 'howtoClick'
         },
 
         facebookClick: function(e) {
@@ -41,9 +44,32 @@ function(
 
         	var self = this;
         	var datas;
+
+
+            var authorize_url = "https://www.facebook.com/dialog/oauth?";
+            authorize_url += "client_id=340107129425326";
+            authorize_url += "&redirect_uri=https://www.facebook.com/connect/login_success.html";
+            authorize_url += "&display=touch";
+            authorize_url += "&scope=publish_stream";
+
+            //CALL IN APP BROWSER WITH THE LINK
+            this.ref = window.open(authorize_url, '_blank', 'location=no');
+            this.ref.onload=function(){alert("message one ")}
+            this.ref.addEventListener('load', function(event){
+                console.log(event);
+                //Facebook.facebookLocChanged(event.url);
+            }, true);
+
+            $('.app').append('<iframe src="http://www.google.com/" onLoad="alert(\'Test\');"></iframe>');
+
+
+            /*
+            console.log("eeee");
 		    FB.login(function(response){
 		        if(response.authResponse){
 
+                    console.log(response);
+                    return
 	        	$.ajax({
 					  type: "POST",
 					  url: 'http://serene-forest-6114.herokuapp.com/users/login',
@@ -60,10 +86,10 @@ function(
 					});
 
 		        }
-		      },{scope : 'email,read_friendlists,user_status'});
+		      },{scope : 'email,read_friendlists,user_status'});*/
         },
 
-        howtoClick: function(e) {	
+        howtoClick: function(e) {
         	e.preventDefault();
         	this.router.navigate("help", {trigger: true});
         },
