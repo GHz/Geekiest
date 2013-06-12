@@ -57,12 +57,20 @@ function(
             this.ref.onload=function(){alert("message one ")}
             this.ref.addEventListener('load', function(event){
                 console.log(event);
+               
                 //Facebook.facebookLocChanged(event.url);
             }, true);
 
-            $('.app').append('<iframe src="http://www.google.com/" onLoad="alert(\'Test\');"></iframe>');
+            /*$.ajax({
+                type: "GET",
+                url : authorize_url,
+                success: function(response, data, data2, data3){
+                    console.log(response);
+                    console.log(data);
 
-
+                }
+            });
+*/
             /*
             console.log("eeee");
 		    FB.login(function(response){
